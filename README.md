@@ -1,27 +1,51 @@
-# MERN-Stack Infrastructure
+# SpaceBook
 
-Clone this repo to provide the starter code for a comprehensive MERN-Stack project including token-based authentication.
+pitch
 
-Here’s the process to create a new MERN-Stack project:
+## Tech Being Used
 
-1. Clone the mern-infrastructure repo: ``git clone <url of mern-infrastructure> <name-of-project>``
-    >Note: that the folder created will be same as ``<name-of-project>`` instead of mern-infrastructure
+- HTML
+- CSS
+- JavaScript
+- Express
+- Mongoose
+- React
+- EJS
+- oAuth 2.0
 
-2. ``cd <name-of-project>``
+## ERD
 
-3. Install the Node modules: ``npm i``
-    >Note: Don't forget to run ``npm run build`` and to start your express server run ``nodemon server`` and for react run ``npm start``
+## Restful Routing Chart
 
-4. Create a .env (``touch .env``) and add entries for ``DATABASE_URL`` and ``SECRET``
+## WireFrame
 
-5. Update the ``"name": "mern-infrastructure"`` in **package.json** to the name of your project.
+## User Stories
 
-6. Create a new repo on your personal GH account.
+## MVP Checklist
 
-7. Copy the new GH repo’s URL.
+- User can create account and login.
+- User can add info to and update/delete their profile.
+- User can create and read posts.
+- User can add friends who are also users on the app.
+- User's friends list will display on their profile.
+- User can see a list of all users on the app.
 
-8. Update the remote’s URL: ``git remote set-url origin <paste the copied GH url>``
+## Stretch Goals
 
-9. Make the initial commit: ``git add -A && git commit -m "Initial commit"``
+1. User can upload profile picture.
+2. User can search based on name through list of all users.
+3. User can edit and delete their posts.
+4. User can comment on friend's 'wall'.
+5. User can update/delete their posts on friends' 'wall'.
+6. Spotify API integration for profile song circa Myspace 2005
+7. User has some level of control over the styling of their profile page.
+8. User can 'like' friends posts.
+9. User can delete their friends.
+10. User can sort their 'top friends'.
 
-10. Push for the first time: ``git push -u origin main``
+## Maybe Roadblocks
+
+- Feature creep
+- Route mix up
+- Spotify API integration
+- Git collaboration
