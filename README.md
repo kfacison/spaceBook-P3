@@ -1,6 +1,6 @@
 # SpaceBook
 
-pitch
+SpaceBook is an intergalactic social network. Sign up to create your profile, share your favorite planet, and connect with friends. Create posts on your page to share news, facts, or thoughts about space. You might think this app reminds of you of MySpace, but SpaceBook is out of the this world!
 
 ## Tech Being Used
 
@@ -14,25 +14,32 @@ pitch
 - oAuth 2.0
 
 ## ERD
+![ERD](wireframes/PNGS/ERD.png)
 
 ## Restful Routing Chart
 
 RESTful Routes
-| HTTP METHOD (_Verb_) | URL (_Nouns_) | CRUD | Response | Notes |
-| -------------------- | ----------------- | ------ | ------------------------------------ | ----- |
-| GET | / | READ | Load Auth Page | |
-| POST | / | CREATE | Create user in DB | |
-| POST | /login | READ | Check if user cred are valid | |
-| GET | /profile/:id | READ | Display profile and posts on profile | |
-| GET | /profile/:id/edit | READ | Load Edit page | |
-| GET | /allProfiles | READ | Load all profiles page | |
-| PUT | /profiles/:id | UPDATE | | |
-| DELETE | /profiles/:id | DELETE | Delete the user's profile | |
-| POST | /profiles/:id | CREATE | Create a new post on a page | |
-| | | | | |
-| | | | | |
+| HTTP METHOD (_Verb_) | URL (_Nouns_)     | CRUD   | Response                             |
+| -------------------- | ----------------- | ------ | ------------------------------------ |
+| GET                  | /                 | READ   | Load Auth Page                       |
+| POST                 | /                 | CREATE | Create user in DB                    |
+| POST                 | /login            | READ   | Check if user cred are valid         |
+| GET                  | /profile/:id      | READ   | Display profile and posts on profile |
+| GET                  | /profile/:id/edit | READ   | Load Edit page                       |
+| GET                  | /allProfiles      | READ   | Load all profiles page               |
+| PUT                  | /profiles/:id     | UPDATE |                                      |
+| DELETE               | /profiles/:id     | DELETE | Delete the user's profile            |
+| POST                 | /profiles/:id     | CREATE | Create a new post on a page          |
+|                      |                   |        |                                      |
+
 
 ## WireFrame
+![Auth Page](wireframes/PNGS/$_signup_login.png)
+![Profrile Page](wireframes/PNGS/profilepage.png)
+![Edit Page](wireframes/PNGS/editPage.png)
+![AllUser Page](wireframes/PNGS/allUsers.png)
+
+
 
 ## User Stories
 
