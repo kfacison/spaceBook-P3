@@ -17,9 +17,32 @@ pitch
 
 ## Restful Routing Chart
 
+RESTful Routes
+| HTTP METHOD (_Verb_) | URL (_Nouns_) | CRUD | Response | Notes |
+| -------------------- | ----------------- | ------ | ------------------------------------ | ----- |
+| GET | / | READ | Load Auth Page | |
+| POST | / | CREATE | Create user in DB | |
+| POST | /login | READ | Check if user cred are valid | |
+| GET | /profile/:id | READ | Display profile and posts on profile | |
+| GET | /profile/:id/edit | READ | Load Edit page | |
+| GET | /allProfiles | READ | Load all profiles page | |
+| PUT | /profiles/:id | UPDATE | | |
+| DELETE | /profiles/:id | DELETE | Delete the user's profile | |
+| POST | /profiles/:id | CREATE | Create a new post on a page | |
+| | | | | |
+| | | | | |
+
 ## WireFrame
 
 ## User Stories
+
+AAU
+
+- I want to be able to login with a username and password
+- I dont want to have to login more than once within a 24hr period
+- I want to create a personalized profile
+- I want to see who else is on the app and add friends
+- I want to share super cool facts about space on my page (make a post)
 
 ## MVP Checklist
 
@@ -37,11 +60,12 @@ pitch
 3. User can edit and delete their posts.
 4. User can comment on friend's 'wall'.
 5. User can update/delete their posts on friends' 'wall'.
-6. Spotify API integration for profile song circa Myspace 2005
+6. Spotify API integration for profile song
 7. User has some level of control over the styling of their profile page.
 8. User can 'like' friends posts.
 9. User can delete their friends.
 10. User can sort their 'top friends'.
+11. NASA API integration.
 
 ## Maybe Roadblocks
 
