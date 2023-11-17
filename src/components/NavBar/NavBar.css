@@ -1,0 +1,16 @@
+nav {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+#right-side-navbar {
+  border: 2px solid black;
+  padding: 10px;
+  margin-left: auto;
+}
+
+img {
+  margin-right: 50px;
+  height: 50px;
+  width: auto;
+}
