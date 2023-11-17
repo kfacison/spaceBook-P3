@@ -18,18 +18,15 @@ SpaceBook is an intergalactic social network. Sign up to create your profile, sh
 ## Restful Routing Chart
 
 RESTful Routes
-| HTTP METHOD (_Verb_) | URL (_Nouns_)     | CRUD   | Response                             |
-| -------------------- | ----------------- | ------ | ------------------------------------ |
-| GET                  | /                 | READ   | Load Auth Page                       |
-| POST                 | /                 | CREATE | Create user in DB                    |
-| POST                 | /login            | READ   | Check if user cred are valid         |
-| GET                  | /profile/:id      | READ   | Display profile and posts on profile |
-| GET                  | /profile/:id/edit | READ   | Load Edit page                       |
-| GET                  | /allProfiles      | READ   | Load all profiles page               |
-| PUT                  | /profiles/:id     | UPDATE |                                      |
-| DELETE               | /profiles/:id     | DELETE | Delete the user's profile            |
-| POST                 | /profiles/:id     | CREATE | Create a new post on a page          |
-|                      |                   |        |                                      |
+| HTTP METHOD (_Verb_) | URL (_Nouns_)      | CRUD   | Response                             |
+| -------------------- | ------------------ | ------ | ------------------------------------ |
+| POST                 | /                  | CREATE | Create user in DB                    |
+| POST                 | /login             | READ   | Check if user cred are valid         |
+| GET                  | /profiles/:id      | READ   | Display profile and posts on profile |
+| GET                  | /profiles          | READ   | Load all profiles page               |
+| PUT                  | /profiles/:id      | UPDATE | Updates user's profile               |
+| DELETE               | /profiles/:id      | DELETE | Delete the user's profile            |
+| POST                 | /profiles/:id      | CREATE | Create a new post on a page          |
 
 
 ## WireFrame
