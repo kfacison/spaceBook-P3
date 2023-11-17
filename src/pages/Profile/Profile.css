@@ -1,0 +1,64 @@
+/* * {
+  border: 2px solid blue;
+} */
+#profile-container {
+  border: 2px solid black;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+#profile-left-side {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+}
+#profile-right-side {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+
+#profile-photo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  width: 150px;
+  border: 2px solid black;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+#about-me-box {
+  display: flex;
+  height: 150px;
+  width: 180px;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+}
+
+#friends-list-container {
+  width: 100vh;
+  border: 2px solid black;
+
+  margin: 20px;
+}
+
+#post-component-container {
+  width: 100vh;
+}
+
+#create-post-container {
+  height: 80px;
+  margin-bottom: 30px;
+  border: 2px solid black;
+}
+
+#old-posts-container {
+  height: 80px;
+  border: 2px solid black;
+}
