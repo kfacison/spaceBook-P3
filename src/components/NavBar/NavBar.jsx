@@ -15,7 +15,7 @@ export default function NavBar({ user, setUser }) {
       </div>
       <Link to="/profiles">All Users</Link>
       &nbsp; | &nbsp;
-      <Link to="/profile">Profile</Link>
+      <Link to="/profiles/:id">Profile</Link>
       {/* <p>Welcome, {user.name}</p>  maybe we will use this */}
       <div id="right-side-navbar">
         <Link to="" onClick={handleLogOut}>
