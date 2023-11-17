@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import AuthPage from "../AuthPage/AuthPage";
 import Profile from "../Profile/Profile";
-import OrderHistoryPage from "../OrderHistoryPage/OrderHistoryPage";
+import AllProfiles from "../AllProfiles/AllProfiles";
 import NavBar from "../../components/NavBar/NavBar";
 import { getUser } from "../../utilities/users-service";
 import "./App.css";
@@ -16,7 +16,8 @@ export default function App() {
           <NavBar user={user} setUser={setUser} />
           <Routes>
             <Route path="/profile" element={<Profile />} />
-            <Route path="/orders" element={<OrderHistoryPage />} />
+            {/*need id defined  ^^^^^ */}
+            <Route path="/profiles" element={<AllProfiles />} />
           </Routes>
         </>
       ) : (
