@@ -28,10 +28,6 @@ const profileSchema = new Schema({
     friends: [{
         type: Schema.Types.ObjectId,
         ref: 'Profile'
-    }],
-    posts: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Post'        
     }]
 }, {
     timestamps: true,
