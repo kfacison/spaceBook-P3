@@ -21,4 +21,11 @@ async function update(req, res) {
 
 async function getProfile(req, res) {
     console.log("Hit getProfile controller")
+    const profile = await Profile.find({user: req.user._id});
+    console.log(profile);
+    try {
+        res.json(profile)
+    } catch {
+        console.log(`Failed to retrieve user's profile`)
+    }
 }
