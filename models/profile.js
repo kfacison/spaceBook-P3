@@ -1,12 +1,13 @@
+const User = require('./user');
+
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-import User from './user';
-import Post from './post'
+
 
 const profileSchema = new Schema({
     user: {
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: User
     },
     username: {
         type: String,
