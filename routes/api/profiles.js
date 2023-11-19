@@ -9,15 +9,14 @@ router.get('/:id', ensureLoggedIn, profilesCtrl.getProfile);
 // GET /api/profiles
 router.get('/', ensureLoggedIn, profilesCtrl.getAll);
 
-// POST /api/profiles
-router.get('/:id', ensureLoggedIn, profilesCtrl.update);
+// POST /api/profiles/:id
+router.get('/:id', ensureLoggedIn, profilesCtrl.createProfile);
 
-// DELETE /api/profiles
-router.get('/:id', ensureLoggedIn, profilesCtrl.deleteProfile);
+// PUT /api/profiles/:id
+router.put('/:id', ensureLoggedIn, profilesCtrl.update);
 
-
-
-router.get('/', ensureLoggedIn, notesCtrl.index);
+// DELETE /api/profiles/:id
+router.delete('/:id', ensureLoggedIn, profilesCtrl.deleteProfile);
 
 
 module.exports = router;

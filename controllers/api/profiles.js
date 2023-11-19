@@ -1,6 +1,7 @@
 const Profile = require('../../models/profile');
 
 module.exports = {
+    createProfile,
     getProfile,
     update,
     deleteProfile,
@@ -27,5 +28,16 @@ async function getProfile(req, res) {
         res.json(profile)
     } catch {
         console.log(`Failed to retrieve user's profile`)
+    }
+}
+
+async function createProfile(req, res) {
+    console.log("Hit createProfile controller")
+    const profile = await new Profile({user: req.user._id, username: "Earthling"})
+    console.log(profile);
+    try {
+        res.json(profile)
+    } catch {
+        console.log(`Failed to create user's profile`)
     }
 }
