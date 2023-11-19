@@ -1,7 +1,7 @@
 import "./ProfileEditPage.css";
 import { useState } from "react";
 //import { useHistory } from "react-router-dom";
-//import * as ProfileApi from "./utilities/profile-api";
+import {update} from "../../utilities/profiles-api";
 
 //if profile is already populated them show that as value
 export default function App() {
@@ -21,7 +21,7 @@ export default function App() {
     evt.preventDefault();
     console.log(formData);
     console.log("sent to uttilities");
-    //const submitRes = await ProfileApi.updateProfile(formData);
+    const submitRes = await update(formData);
     console.log("send back to user's profile page");
     //history.push('/profiles/:id');
   }
