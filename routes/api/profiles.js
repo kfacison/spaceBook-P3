@@ -10,7 +10,7 @@ router.get('/:id', ensureLoggedIn, profilesCtrl.getProfile);
 router.get('/', ensureLoggedIn, profilesCtrl.getAll);
 
 // POST /api/profiles/:id
-router.get('/:id', ensureLoggedIn, profilesCtrl.createProfile);
+router.post('/:id', ensureLoggedIn, profilesCtrl.createProfile);
 
 // PUT /api/profiles/:id
 router.put('/:id', ensureLoggedIn, profilesCtrl.update);
