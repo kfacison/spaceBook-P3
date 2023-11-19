@@ -9,14 +9,15 @@ import "./App.css";
 import ProfileEditPage from "../ProfileEditPage/ProfileEditPage";
 
 export default function App() {
-  const [user, setUser] = useState(true);
+  const [user, setUser] = useState(getUser());
+
   return (
     <main className="App">
       {user ? (
         <>
           <NavBar user={user} setUser={setUser} />
           <Routes>
-            <Route path="/profiles/:id" element={<Profile />} />
+            <Route path="/profiles/:id" element={<Profile user={user} />} />
             <Route path="/profiles/:id/edit" element={<ProfileEditPage />} />
             {/*need id defined  ^^^^^ */}
             <Route path="/profiles" element={<AllProfiles />} />
