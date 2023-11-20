@@ -9,14 +9,15 @@ module.exports = {
 };
 
 async function getAll(req, res) {
-  console.log("Hit getAll controller");
-  // Update later and set limit to 100 profiles
-  const profiles = await Profile.find({});
-  try {
-    res.json(profiles);
-  } catch {
-    console.log("Failed to retrieve all profiles");
-  }
+    console.log("Hit getAll controller")
+    // Update later and set limit to 100 profiles
+    try{
+        const profiles = await Profile.find({});
+        // console.log(profiles);
+        res.status(200).json(profiles);
+    } catch {
+        console.log('Failed to retrieve all profiles');
+    }
 }
 
 // Does this need to delete the user?
