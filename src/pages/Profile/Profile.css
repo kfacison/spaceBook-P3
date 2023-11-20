@@ -2,7 +2,6 @@
   border: 2px solid blue;
 } */
 #profile-container {
-  border: 2px solid black;
   display: grid;
   grid-template-columns: 1fr 2fr;
 }
@@ -42,12 +41,6 @@
   border: 2px solid black;
 }
 
-#friends-list-container {
-  width: 100%;
-  border: 2px solid black;
-
-  margin: 20px;
-}
 
 #post-component-container {
   width: 100%;

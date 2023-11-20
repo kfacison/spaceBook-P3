@@ -1,0 +1,35 @@
+#about-me-box {
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
+#about-me-wrapper {
+  position: relative;
+}
+
+#edit-profile-link {
+  font-size: 10px;
+  border: 2px solid black;
+  position: absolute;
+  border-radius: 50%;
+  top: 0; /* Adjust these values as needed */
+  right: 0; /* Adjust these values as needed */
+  background-color: var(--main-btn-color); /* Optional: For better visibility */
+  padding: 5px; /* Optional: For better visibility */
+  text-decoration: none;
+  color: var(--main-btn-link-text-color);
+}
+
+#edit-profile-link:hover {
+  background-color: var(--main-btn-link-bg-color-hover);
+  font-size: 10px;
+  position: absolute;
+  border-radius: 40%;
+  top: 0; /* Adjust these values as needed */
+  right: 0; /* Adjust these values as needed */
+  padding: 5px; /* Optional: For better visibility */
+  text-decoration: none;
+  color: var(--main-btn-link-text-color-hover);
+}

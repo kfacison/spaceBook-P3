@@ -13,12 +13,17 @@ export default function NavBar({ user, setUser }) {
       <div id="logo">
         <img src="https://imgur.com/cKhQa3t.png" alt="logo" />
       </div>
-      <Link to="/profiles">All Users</Link>
+      <Link to="/profiles" className="nav-links">
+        All Users
+      </Link>
       &nbsp; | &nbsp;
-      <Link to="/profiles/:id">Profile</Link>
+      <Link to="/profiles/:id" className="nav-links">
+        Profile
+      </Link>
       {/* <p>Welcome, {user.name}</p>  maybe we will use this */}
       <div id="right-side-navbar">
-        <Link to="" onClick={handleLogOut}>
+        
+        <Link to="" onClick={handleLogOut} className="nav-links">
           Log Out
         </Link>
       </div>

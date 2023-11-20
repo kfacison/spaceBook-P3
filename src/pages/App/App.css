@@ -1,8 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap");
 
+:root {
+  --main-bg-color: lightcyan;
+  --main-btn-color: powderblue;
+  --main-btn-border-color: grey;
+  --main-old-posts-color: powderblue;
+  --main-btn-link-text-color: black;
+  --main-btn-link-bg-color-hover: teal;
+  --main-btn-link-text-color-hover: white;
+}
 .App {
   text-align: center;
   font-family: "Kanit", sans-serif;
+  background-color: var(--main-bg-color);
 }
 
 .App-logo {
@@ -24,18 +34,23 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
 }
 
 .App-link {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+button {
+  background-color: var(--main-btn-color);
+  border-color: var(--main-btn-border-color);
+  color: var(--main-btn-link-text-color);
+  border-radius: 10px;
+}
+
+button:hover {
+  background-color: var(--main-btn-link-bg-color-hover);
+
+  border-color: var(--main-btn-border-color);
+  color: var(--main-btn-link-text-color-hover);
+  border-radius: 10px;
 }

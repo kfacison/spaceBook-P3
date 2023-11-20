@@ -9,23 +9,30 @@ import "./App.css";
 import ProfileEditPage from "../ProfileEditPage/ProfileEditPage";
 
 export default function App() {
+  const [theme, setTheme] = useState("blue");
+  const toggleTheme = () => {
+    setTheme(theme === "blue" ? "blue" : "space");
+  };
   const [user, setUser] = useState(getUser());
 
   return (
-    <main className="App">
-      {user ? (
-        <>
-          <NavBar user={user} setUser={setUser} />
-          <Routes>
-            <Route path="/profiles/:id" element={<Profile user={user} />} />
-            <Route path="/profiles/:id/edit" element={<ProfileEditPage />} />
-            {/*need id defined  ^^^^^ */}
-            <Route path="/profiles" element={<AllProfiles />} />
-          </Routes>
-        </>
-      ) : (
-        <AuthPage setUser={setUser} />
-      )}
-    </main>
+    <div data-theme={theme}>
+      <button onClick={toggleTheme}>Toggle Theme</button>
+      <main className="App">
+        {user ? (
+          <>
+            <NavBar user={user} setUser={setUser} />
+            <Routes>
+              <Route path="/profiles/:id" element={<Profile user={user} />} />
+              <Route path="/profiles/:id/edit" element={<ProfileEditPage />} />
+              {/*need id defined  ^^^^^ */}
+              <Route path="/profiles" element={<AllProfiles />} />
+            </Routes>
+          </>
+        ) : (
+          <AuthPage setUser={setUser} />
+        )}
+      </main>
+    </div>
   );
 }

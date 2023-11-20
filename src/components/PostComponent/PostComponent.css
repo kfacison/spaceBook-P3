@@ -27,7 +27,7 @@ textarea {
 }
 
 #old-posts-container {
-  border-radius: 10px;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -46,8 +46,8 @@ textarea {
 }
 
 #old-posts-container::-webkit-scrollbar-thumb {
-  background-color: darkgrey;
-  outline: 1px solid slategrey;
+  background-color: var(--main-old-posts-color);
+  outline: 1px solid var(--main-old-posts-color);
   border-radius: 10px;
 }
 
@@ -64,4 +64,6 @@ textarea {
   text-align: center;
   margin: 0;
   padding: 0;
+  background-color: var(--main-bg-color);
+  border-radius: 10px;
 }
