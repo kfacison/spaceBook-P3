@@ -8,24 +8,24 @@ const AllProfiles = () => {
   const [allProfiles, setAllProfiles] = useState([])
 
 useEffect(function() {
-  async function getAll(){
+  async function getAllProfiles(){
     const allProfiles = await getAll();
     console.log(`Tried getting all prof ${allProfiles}`);
     setAllProfiles(allProfiles)
   }
-  getAll();
+  getAllProfiles();
 }, []);
   return (
     <div>
       <h1>User List</h1>
     
-      {/* <ul>
-        {userList.map((user) => (
+      <ul>
+        {allProfiles.map((user) => (
           <li key={user.id}>
             <strong>Username:</strong> {user.username}, <strong>Email:</strong> {user.email}
           </li>
         ))}
-      </ul> */}
+      </ul>
     </div>
   );
 };
