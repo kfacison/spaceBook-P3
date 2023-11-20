@@ -8,8 +8,8 @@ export function getProfile(user) {
   return sendRequest(`${BASE_URL}/${user._id}`);
 }
 
-export function update(user) {
-  return sendRequest(`${BASE_URL}/${user._id}`, "PUT");
+export function update(formData) {
+    return sendRequest(`${BASE_URL}/${formData._id}`, 'PUT', formData)
 }
 
 export function deleteProfile(user) {

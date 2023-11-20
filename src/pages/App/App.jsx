@@ -21,11 +21,10 @@ export default function App() {
 
   useEffect(function () {
     async function getMyProfile() {
+      console.log('get myProf')
       const profile = await profilesAPI.getProfile(user);
-      setMyProfile(profile);
-      // myProfile[0] ? setProfile(myProfile)
-      // :
-      // console.log("no profile");
+      console.log(profile)
+      setMyProfile(profile)
     }
     getMyProfile();
   }, []);
@@ -51,10 +50,7 @@ export default function App() {
                 }
               />
               {/*need id defined  ^^^^^ */}
-              <Route
-                path="/profiles"
-                element={<AllProfiles myProfile={myProfile} />}
-              />
+              <Route path="/profiles" element={<AllProfiles myProfile={myProfile} />} />
               <Route path="/" element={<NewsFeed myProfile={myProfile} />} />
             </Routes>
           </>
