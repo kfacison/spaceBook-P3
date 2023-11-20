@@ -1,39 +1,31 @@
 // import * as usersService from "../../utilities/users-service";
 import "./AllProfiles.css";
 import React, { useState, useEffect } from 'react';
-import '../../utilities/profiles-api'
+
 import { getAll } from "../../utilities/profiles-api";
 
 const AllProfiles = () => {
-  const [userList, setUserList] = useState([]);
+  const [allProfiles, setAllProfiles] = useState([])
 
-  useEffect(() => {
-    getAll();
-    fetchAllUsers();
-  }, []);
-
-  const fetchAllUsers = () => {
-    
-    const allUsersUrl = 'http://localhost:3000/profiles-api';
-
-
-    fetch(allUsersUrl)
-      .then((response) => response.json())
-      .then((data) => setUserList(data))
-      .catch((error) => console.error('Error fetching all users:', error));
-    
-  };
-
+useEffect(function() {
+  async function getAll(){
+    const allProfiles = await getAll();
+    console.log(`Tried getting all prof ${allProfiles}`);
+    setAllProfiles(allProfiles)
+  }
+  getAll();
+}, []);
   return (
     <div>
       <h1>User List</h1>
-      <ul>
+    
+      {/* <ul>
         {userList.map((user) => (
           <li key={user.id}>
             <strong>Username:</strong> {user.username}, <strong>Email:</strong> {user.email}
           </li>
         ))}
-      </ul>
+      </ul> */}
     </div>
   );
 };
