@@ -8,9 +8,10 @@ export default function ProfileEditPage({myProfile, setMyProfile}) {
   //const history = useHistory();
   //const [formData, setFormData] = useState(myProfile);
   const [formData, setFormData] = useState({
+    user: myProfile[0].user,
     username: myProfile[0].username,
     species: myProfile[0].species ? myProfile[0].species : "",
-    favoritePlanet: myProfile[0].favoritePlanet ? myProfile[0].favoritePlanet : "mercury",
+    favPlanet: myProfile[0].favPlanet ? myProfile[0].favPlanet : "mercury",
     bio: myProfile[0].bio ? myProfile[0].bio : ""
   });
   function handleChange(evt) {
@@ -23,7 +24,8 @@ export default function ProfileEditPage({myProfile, setMyProfile}) {
     console.log(formData);
     console.log("sent to uttilities");
     const submitRes = await update(formData);
-    console.log("send back to user's profile page");
+    console.log(submitRes);
+    await setMyProfile([submitRes]);
     //history.push('/profiles/:id');
   }
   return (
@@ -55,11 +57,11 @@ export default function ProfileEditPage({myProfile, setMyProfile}) {
         </div>
 
         <div>
-          <label htmlFor="favoritePlanet">Favorite Planet:</label>
+          <label htmlFor="favPlanet">Favorite Planet:</label>
           <select
-            id="favoritePlanet"
-            name="favoritePlanet"
-            value={formData.favoritePlanet}
+            id="favPlanet"
+            name="favPlanet"
+            value={formData.favPlanet}
             onChange={handleChange}
           >
             <option value="mercury">Mercury</option>
