@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { signUp } from '../../utilities/users-service';
+import { createProfile } from "../../utilities/profiles-api";
 
 export default class SignUpForm extends Component{
 
@@ -25,7 +26,8 @@ export default class SignUpForm extends Component{
             delete formData.error;
             delete formData.confirm;
             const user = await signUp(formData);
-            this.props.setUser(user)
+            this.props.setUser(user);
+            const profile = await createProfile(user);
         } catch (error) {
             this.setState({error: 'Sign Up Failed - Try Again'});
         }

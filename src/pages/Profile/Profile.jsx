@@ -8,17 +8,20 @@ import { ThemeContext } from "../../contexts/ThemeContext";
 export default function Profile({ user }) {
   const [profile, setProfile] = useState([]);
 
-  async function createNew(user) {
-    const newProfile = await profilesAPI.createProfile(user);
-    setProfile(newProfile);
-  }
+  // async function createNew(user) {
+  //   const newProfile = await profilesAPI.createProfile(user);
+  //   setProfile(newProfile);
+  // }
 
   useEffect(function () {
-    async function getProfile() {
+    async function getMyProfile() {
       const myProfile = await profilesAPI.getProfile(user);
-      myProfile[0] ? setProfile(myProfile) : createNew(user);
+      myProfile[0] ? setProfile(myProfile) 
+      :
+      // createNew(user);
+      console.log("no profile");
     }
-    getProfile();
+    getMyProfile();
   }, []);
 
   const { theme, toggleTheme } = useContext(ThemeContext);
