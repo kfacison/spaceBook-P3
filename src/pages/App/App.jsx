@@ -9,6 +9,7 @@ import "./App.css";
 import ProfileEditPage from "../ProfileEditPage/ProfileEditPage";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { ThemeProvider } from "../../contexts/ThemeContext";
+import NewsFeed from "../NewsFeed/NewsFeed";
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -26,6 +27,7 @@ export default function App() {
               <Route path="/profiles/:id/edit" element={<ProfileEditPage />} />
               {/*need id defined  ^^^^^ */}
               <Route path="/profiles" element={<AllProfiles />} />
+              <Route path="/feed" element={<NewsFeed />} />
             </Routes>
           </>
         ) : (

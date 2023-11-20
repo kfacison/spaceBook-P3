@@ -24,6 +24,10 @@ export default function NavBar({ user, setUser }) {
       <Link to="/profiles/:id" className="nav-links">
         Profile
       </Link>
+      &nbsp; | &nbsp;
+      <Link to="/feed" className="nav-links">
+        Feed
+      </Link>
       {/* <p>Welcome, {user.name}</p>  maybe we will use this */}
       <div id="right-side-navbar">
         <button onClick={toggleTheme}>Toggle Theme</button>
