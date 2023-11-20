@@ -30,3 +30,11 @@ button:hover {
   color: var(--main-btn-link-text-color-hover);
   border-radius: 10px;
 }
+
+h1,
+h2,
+h3,
+.about-me-cat,
+.div-text {
+  color: var(--main-div-text-color);
+}
