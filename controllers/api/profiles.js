@@ -55,7 +55,7 @@ async function getProfile(req, res) {
 async function createProfile(req, res) {
     console.log("Hit createProfile controller")
     try {
-        const profile = await new Profile({user: req.user._id, username: "Earthling"})
+        const profile = new Profile({user: req.user._id, username: "Earthling"})
         await profile.save();
         console.log(profile);
         res.json(profile);

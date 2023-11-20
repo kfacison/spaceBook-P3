@@ -14,15 +14,16 @@ export default function Profile({user}) {
   }
 
   useEffect(function() {
-    async function getProfile(){
+    async function getProfile(user){
       const myProfile = await profilesAPI.getProfile(user);
+      console.log(`Tried getting prof ${myProfile}`);
       myProfile[0] ?
       setProfile(myProfile)
       :
       createNew(user);
     }
-    getProfile();
-  }, []);
+    getProfile(user);
+  }, [user]);
 
   return (
     <div id="profile-container">
