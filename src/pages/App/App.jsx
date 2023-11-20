@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import AuthPage from "../AuthPage/AuthPage";
 import Profile from "../Profile/Profile";
@@ -7,17 +7,16 @@ import NavBar from "../../components/NavBar/NavBar";
 import { getUser } from "../../utilities/users-service";
 import "./App.css";
 import ProfileEditPage from "../ProfileEditPage/ProfileEditPage";
+import { ThemeContext } from "../../contexts/ThemeContext";
+import { ThemeProvider } from "../../contexts/ThemeContext";
 
 export default function App() {
-  const [theme, setTheme] = useState("blue");
-  const toggleTheme = () => {
-    setTheme(theme === "blue" ? "blue" : "space");
-  };
   const [user, setUser] = useState(getUser());
+
+  const { theme } = useContext(ThemeContext);
 
   return (
     <div data-theme={theme}>
-      <button onClick={toggleTheme}>Toggle Theme</button>
       <main className="App">
         {user ? (
           <>
