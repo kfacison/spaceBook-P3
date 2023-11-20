@@ -4,13 +4,14 @@ import { useState } from "react";
 import {update} from "../../utilities/profiles-api";
 
 //if profile is already populated them show that as value
-export default function ProfileEditPage({myProfile}) {
+export default function ProfileEditPage({myProfile, setMyProfile}) {
   //const history = useHistory();
+  //const [formData, setFormData] = useState(myProfile);
   const [formData, setFormData] = useState({
-    username: "",
-    age: "",
-    favPlanet: "mercury",
-    bio: ""
+    username: myProfile[0].username,
+    species: myProfile[0].species ? myProfile[0].species : "",
+    favoritePlanet: myProfile[0].favoritePlanet ? myProfile[0].favoritePlanet : "mercury",
+    bio: myProfile[0].bio ? myProfile[0].bio : ""
   });
   function handleChange(evt) {
     const newFormData = { ...formData, [evt.target.name]: evt.target.value };
@@ -32,10 +33,10 @@ export default function ProfileEditPage({myProfile}) {
         <div id="photo-container-edit-page">insert photo div</div>
 
         <div>
-          <label htmlFor="name">Name:</label>
+          <label htmlFor="username">Username:</label>
           <input
             type="text"
-            id="name"
+            id="username"
             name="username"
             value={formData.username}
             onChange={handleChange}
@@ -43,13 +44,13 @@ export default function ProfileEditPage({myProfile}) {
         </div>
 
         <div>
-          <label htmlFor="age">Age:</label>
+          <label htmlFor="species">Species:</label>
           <input
-            type="number"
-            id="age"
-            name="age"
+            type="text"
+            id="species"
+            name="species"
             autoComplete="off"
-            value={formData.age}
+            value={formData.species}
             onChange={handleChange}
           />
         </div>
