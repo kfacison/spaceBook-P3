@@ -15,7 +15,7 @@ export default function NavBar({ user, setUser }) {
   return (
     <nav>
       <div id="logo">
-        <img src="https://imgur.com/cKhQa3t.png" alt="logo" />
+        <img src="https://imgur.com/cKhQa3t.png" alt="logo" id="logo-img" />
       </div>
       <Link to="/profiles" className="nav-links">
         All Users

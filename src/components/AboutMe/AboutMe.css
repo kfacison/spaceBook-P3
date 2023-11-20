@@ -9,20 +9,26 @@
   position: relative;
 }
 
-#edit-profile-link {
+#edit-button {
   font-size: 10px;
   border: 2px solid black;
   position: absolute;
-  border-radius: 50%;
+  border-radius: 40%;
   top: 0; /* Adjust these values as needed */
   right: 0; /* Adjust these values as needed */
   background-color: var(--main-btn-color); /* Optional: For better visibility */
   padding: 5px; /* Optional: For better visibility */
   text-decoration: none;
   color: var(--main-btn-link-text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  margin: 0px;
 }
 
-#edit-profile-link:hover {
+#edit-button:hover {
   background-color: var(--main-btn-link-bg-color-hover);
   font-size: 10px;
   position: absolute;
