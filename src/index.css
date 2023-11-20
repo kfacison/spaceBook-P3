@@ -33,6 +33,7 @@
   --main-btn-link-text-color: black;
   --main-btn-link-bg-color-hover: mediumorchid;
   --main-btn-link-text-color-hover: white;
+  --main-div-text-color: white;
 }
 
 #root {
