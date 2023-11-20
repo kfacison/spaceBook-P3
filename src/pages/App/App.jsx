@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import AuthPage from "../AuthPage/AuthPage";
 import Profile from "../Profile/Profile";
@@ -10,11 +10,25 @@ import ProfileEditPage from "../ProfileEditPage/ProfileEditPage";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { ThemeProvider } from "../../contexts/ThemeContext";
 import NewsFeed from "../NewsFeed/NewsFeed";
+import * as profilesAPI from "../../utilities/profiles-api";
 
 export default function App() {
   const [user, setUser] = useState(getUser());
 
   const { theme } = useContext(ThemeContext);
+
+  const [myProfile, setMyProfile] = useState([]);
+
+  useEffect(function () {
+    async function getMyProfile() {
+      const profile = await profilesAPI.getProfile(user);
+      setMyProfile(profile)
+      // myProfile[0] ? setProfile(myProfile) 
+      // :
+      // console.log("no profile");
+    }
+    getMyProfile();
+  }, []);
 
   return (
     <div data-theme={theme}>
@@ -23,11 +37,11 @@ export default function App() {
           <>
             <NavBar user={user} setUser={setUser} />
             <Routes>
-              <Route path="/profiles/:id" element={<Profile user={user} />} />
-              <Route path="/profiles/:id/edit" element={<ProfileEditPage />} />
+              <Route path="/profiles/:id" element={<Profile user={user} myProfile={myProfile} />} />
+              <Route path="/profiles/:id/edit" element={<ProfileEditPage myProfile={myProfile} setMyProfile= { setMyProfile }/>} />
               {/*need id defined  ^^^^^ */}
-              <Route path="/profiles" element={<AllProfiles />} />
-              <Route path="/feed" element={<NewsFeed />} />
+              <Route path="/profiles" element={<AllProfiles myProfile={myProfile} />} />
+              <Route path="/feed" element={<NewsFeed myProfile={myProfile} />} />
             </Routes>
           </>
         ) : (
