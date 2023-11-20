@@ -8,9 +8,11 @@ export default function AboutMe({ profile }) {
       <div id="profile-photo-container">div</div>
       <div id="about-me-wrapper">
         <div id="about-me-box">
-          <div>Name: (user.name)</div>
-          <div>Age: (user.age)</div>
-          <div>Favorite Planet: (user.favoritePlanet)</div>
+          <div className="about-me-cat">Name: (user.name)</div>
+          <div className="about-me-cat">Age: (user.age)</div>
+          <div className="about-me-cat">
+            Favorite Planet: (user.favoritePlanet)
+          </div>
         </div>
         <Link to="/profiles/:id/edit" id="edit-profile-link">
           EDIT
