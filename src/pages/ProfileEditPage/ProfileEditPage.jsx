@@ -8,7 +8,7 @@ export default function App() {
   //const history = useHistory();
   const [formData, setFormData] = useState({
     username: "",
-    age: "",
+    species: "",
     favoritePlanet: "mercury",
     bio: ""
   });
@@ -31,24 +31,24 @@ export default function App() {
         <div id="photo-container-edit-page">insert photo div</div>
 
         <div>
-          <label htmlFor="name">Name:</label>
+          <label htmlFor="username">Username:</label>
           <input
             type="text"
-            id="name"
-            name="name"
-            value={formData.name}
+            id="username"
+            name="username"
+            value={formData.username}
             onChange={handleChange}
           />
         </div>
 
         <div>
-          <label htmlFor="age">Age:</label>
+          <label htmlFor="species">Species:</label>
           <input
-            type="number"
-            id="age"
-            name="age"
+            type="text"
+            id="species"
+            name="species"
             autoComplete="off"
-            value={formData.age}
+            value={formData.species}
             onChange={handleChange}
           />
         </div>
