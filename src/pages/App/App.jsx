@@ -21,11 +21,10 @@ export default function App() {
 
   useEffect(function () {
     async function getMyProfile() {
+      console.log('get myProf')
       const profile = await profilesAPI.getProfile(user);
+      console.log(profile)
       setMyProfile(profile)
-      // myProfile[0] ? setProfile(myProfile) 
-      // :
-      // console.log("no profile");
     }
     getMyProfile();
   }, []);

@@ -4,12 +4,12 @@ import { useState } from "react";
 import {update} from "../../utilities/profiles-api";
 
 //if profile is already populated them show that as value
-export default function App() {
+export default function ProfileEditPage({myProfile}) {
   //const history = useHistory();
   const [formData, setFormData] = useState({
-    name: "",
+    username: "",
     age: "",
-    favoritePlanet: "mercury",
+    favPlanet: "mercury",
     bio: ""
   });
   function handleChange(evt) {
@@ -20,8 +20,9 @@ export default function App() {
   async function handleSubmit(evt) {
     evt.preventDefault();
     console.log(formData);
-    console.log("sent to uttilities");
+    console.log("sent to utilities");
     const submitRes = await update(formData);
+    console.log(submitRes);
     console.log("send back to user's profile page");
     //history.push('/profiles/:id');
   }
@@ -35,8 +36,8 @@ export default function App() {
           <input
             type="text"
             id="name"
-            name="name"
-            value={formData.name}
+            name="username"
+            value={formData.username}
             onChange={handleChange}
           />
         </div>
@@ -57,8 +58,8 @@ export default function App() {
           <label htmlFor="favoritePlanet">Favorite Planet:</label>
           <select
             id="favoritePlanet"
-            name="favoritePlanet"
-            value={formData.favoritePlanet}
+            name="favPlanet"
+            value={formData.favPlanet}
             onChange={handleChange}
           >
             <option value="mercury">Mercury</option>
