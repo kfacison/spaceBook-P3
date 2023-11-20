@@ -7,7 +7,7 @@ import {update} from "../../utilities/profiles-api";
 export default function App() {
   //const history = useHistory();
   const [formData, setFormData] = useState({
-    name: "",
+    username: "",
     age: "",
     favoritePlanet: "mercury",
     bio: ""
