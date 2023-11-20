@@ -3,8 +3,16 @@ import "./FriendsList.css";
 
 export default function FriendsList() {
   return (
-    <div id="friends-list-container">
-      <h1>FriendsList</h1>
-    </div>
+    <>
+      <h3>BEST FRIENDS</h3>
+      <div id="friends-list-container">
+        <div className="friend"> F </div>
+        <div className="friend"> F </div>
+        <div className="friend"> F </div>
+        <div className="friend"> F </div>
+        <div className="friend"> F </div>
+        <div className="friend"> F </div>
+      </div>
+    </>
   );
 }

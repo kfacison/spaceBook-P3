@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import * as userService from "../../utilities/users-service";
 import "./NavBar.css";
+import { ThemeContext } from "../../contexts/ThemeContext";
+import React, { useContext } from "react";
 
 export default function NavBar({ user, setUser }) {
   function handleLogOut() {
@@ -8,17 +10,25 @@ export default function NavBar({ user, setUser }) {
     // Update state will also cause a re-render
     setUser(null);
   }
+  const { toggleTheme } = useContext(ThemeContext);
+
   return (
     <nav>
       <div id="logo">
         <img src="https://imgur.com/cKhQa3t.png" alt="logo" />
       </div>
-      <Link to="/profiles">All Users</Link>
+      <Link to="/profiles" className="nav-links">
+        All Users
+      </Link>
       &nbsp; | &nbsp;
-      <Link to="/profiles/:id">Profile</Link>
+      <Link to="/profiles/:id" className="nav-links">
+        Profile
+      </Link>
       {/* <p>Welcome, {user.name}</p>  maybe we will use this */}
       <div id="right-side-navbar">
-        <Link to="" onClick={handleLogOut}>
+        <button onClick={toggleTheme}>Toggle Theme</button>
+
+        <Link to="" onClick={handleLogOut} className="nav-links">
           Log Out
         </Link>
       </div>

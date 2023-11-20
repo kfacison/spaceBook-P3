@@ -1,0 +1,69 @@
+#create-post-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 200px;
+  border-radius: 10px;
+}
+
+#user-post-form-container {
+  width: 100%;
+  resize: none;
+}
+
+#user-post-form {
+  width: 90%;
+  height: 40%;
+  resize: none;
+  box-sizing: border-box;
+  line-height: normal;
+  border-radius: 10px;
+}
+
+textarea {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 5px;
+}
+
+#old-posts-container {
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-y: auto;
+  height: 100px;
+  padding: 10px;
+  width: 90%;
+}
+#old-posts-container::-webkit-scrollbar {
+  width: 1em;
+  border-radius: 10px;
+}
+
+#old-posts-container::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+#old-posts-container::-webkit-scrollbar-thumb {
+  background-color: var(--main-old-posts-color);
+  outline: 1px solid var(--main-old-posts-color);
+  border-radius: 10px;
+}
+
+#old-posts-container::-webkit-scrollbar-track-piece {
+  border-radius: 10px;
+}
+#old-posts-container::-webkit-scrollbar-track {
+  border-radius: 10px;
+  display: none;
+}
+
+#old-posts-list {
+  list-style: none;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  background-color: var(--main-bg-color);
+  border-radius: 10px;
+}
