@@ -15,7 +15,11 @@ export default function AboutMe({ profile }) {
           </div>
         </div>
         <Link to="/profiles/:id/edit" id="edit-profile-link">
-          EDIT
+          <img
+            src="https://i.ibb.co/ysycYrk/edit-square-FILL0-wght400-GRAD0-opsz24.png"
+            alt="Edit Icon"
+            id="edit-button"
+          />
         </Link>
       </div>
     </>
