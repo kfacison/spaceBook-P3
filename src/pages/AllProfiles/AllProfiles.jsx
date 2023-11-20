@@ -1,3 +1,4 @@
+import UserAvatar from "../../components/UserAvatar/UserAvatar";
 import * as usersService from "../../utilities/users-service";
 import "./AllProfiles.css";
 import React, { useState, useEffect } from 'react';

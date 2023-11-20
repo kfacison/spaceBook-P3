@@ -1,0 +1,26 @@
+#friends-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 10px;
+  justify-content: space-between;
+  margin: 0;
+  width: 90%;
+  margin-top: 20px;
+}
+
+.friend {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
+  padding: 10px;
+  border: 2px solid black;
+  height: 50px;
+  width: 50px;
+  border-radius: 30px;
+  margin: 10px 2px 10px 2px;
+}
+h3 {
+  margin: 0;
+  padding-top: 20px;
+}

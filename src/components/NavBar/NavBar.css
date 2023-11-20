@@ -2,15 +2,33 @@ nav {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  border-bottom: 3px ridge black;
+  text-decoration: none;
 }
 #right-side-navbar {
-  border: 2px solid black;
   padding: 10px;
   margin-left: auto;
+  text-decoration: none;
 }
 
 img {
   margin-right: 50px;
   height: 50px;
   width: auto;
+}
+
+.nav-links {
+  text-decoration: none;
+  color: var(--main-btn-link-text-color);
+  background-color: var(--main-btn-color);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.nav-links:hover {
+  text-decoration: none;
+  color: var(--main-btn-link-text-color-hover);
+  background-color: var(--main-btn-link-bg-color-hover);
+  padding: 10px;
+  border-radius: 10px;
 }
