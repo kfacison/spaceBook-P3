@@ -1,17 +1,19 @@
 import "./ProfileEditPage.css";
 import { useState } from "react";
 //import { useHistory } from "react-router-dom";
-import {update} from "../../utilities/profiles-api";
+import { update } from "../../utilities/profiles-api";
 
 //if profile is already populated them show that as value
-export default function ProfileEditPage({myProfile, setMyProfile}) {
+export default function ProfileEditPage({ myProfile, setMyProfile }) {
   //const history = useHistory();
   //const [formData, setFormData] = useState(myProfile);
   const [formData, setFormData] = useState({
     username: myProfile[0].username,
     species: myProfile[0].species ? myProfile[0].species : "",
-    favoritePlanet: myProfile[0].favoritePlanet ? myProfile[0].favoritePlanet : "mercury",
-    bio: myProfile[0].bio ? myProfile[0].bio : ""
+    favoritePlanet: myProfile[0].favoritePlanet
+      ? myProfile[0].favoritePlanet
+      : "mercury",
+    bio: myProfile[0].bio ? myProfile[0].bio : "",
   });
   function handleChange(evt) {
     const newFormData = { ...formData, [evt.target.name]: evt.target.value };

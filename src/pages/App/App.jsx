@@ -22,8 +22,8 @@ export default function App() {
   useEffect(function () {
     async function getMyProfile() {
       const profile = await profilesAPI.getProfile(user);
-      setMyProfile(profile)
-      // myProfile[0] ? setProfile(myProfile) 
+      setMyProfile(profile);
+      // myProfile[0] ? setProfile(myProfile)
       // :
       // console.log("no profile");
     }
@@ -37,11 +37,25 @@ export default function App() {
           <>
             <NavBar user={user} setUser={setUser} />
             <Routes>
-              <Route path="/profiles/:id" element={<Profile user={user} myProfile={myProfile} />} />
-              <Route path="/profiles/:id/edit" element={<ProfileEditPage myProfile={myProfile} setMyProfile= { setMyProfile }/>} />
+              <Route
+                path="/profiles/:id"
+                element={<Profile user={user} myProfile={myProfile} />}
+              />
+              <Route
+                path="/profiles/:id/edit"
+                element={
+                  <ProfileEditPage
+                    myProfile={myProfile}
+                    setMyProfile={setMyProfile}
+                  />
+                }
+              />
               {/*need id defined  ^^^^^ */}
-              <Route path="/profiles" element={<AllProfiles myProfile={myProfile} />} />
-              <Route path="/feed" element={<NewsFeed myProfile={myProfile} />} />
+              <Route
+                path="/profiles"
+                element={<AllProfiles myProfile={myProfile} />}
+              />
+              <Route path="/" element={<NewsFeed myProfile={myProfile} />} />
             </Routes>
           </>
         ) : (

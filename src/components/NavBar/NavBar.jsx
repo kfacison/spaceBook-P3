@@ -25,7 +25,7 @@ export default function NavBar({ user, setUser }) {
         Profile
       </Link>
       &nbsp; | &nbsp;
-      <Link to="/feed" className="nav-links">
+      <Link to="/" className="nav-links">
         Feed
       </Link>
       {/* <p>Welcome, {user.name}</p>  maybe we will use this */}
