@@ -15,6 +15,30 @@
   box-sizing: border-box;
 }
 
+:root {
+  --main-bg-color: lightcyan;
+  --main-btn-color: powderblue;
+  --main-btn-border-color: grey;
+  --main-old-posts-color: powderblue;
+  --main-btn-link-text-color: black;
+  --main-btn-link-bg-color-hover: teal;
+  --main-btn-link-text-color-hover: white;
+}
+
+[data-theme="space"] {
+  --main-bg-color: slategrey;
+  --main-btn-color: mediumspringgreen;
+  --main-btn-border-color: grey;
+  --main-old-posts-color: mediumspringgreen;
+  --main-btn-link-text-color: black;
+  --main-btn-link-bg-color-hover: mediumorchid;
+  --main-btn-link-text-color-hover: white;
+}
+
+#root {
+  background-color: var(--main-bg-color);
+}
+
 body {
   background-color: var(--main-bg-color);
   margin: 0;
@@ -24,7 +48,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--main-bg-color);
-  padding: 2vmin;
   height: 100vh;
 }
 
