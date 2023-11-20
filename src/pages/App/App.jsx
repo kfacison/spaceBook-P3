@@ -40,7 +40,7 @@ export default function App() {
               <Route path="/profiles/:id/edit" element={<ProfileEditPage myProfile={myProfile} setMyProfile= { setMyProfile }/>} />
               {/*need id defined  ^^^^^ */}
               <Route path="/profiles" element={<AllProfiles myProfile={myProfile} />} />
-              <Route path="/feed" element={<NewsFeed myProfile={myProfile} />} />
+              <Route path="/" element={<NewsFeed myProfile={myProfile} />} />
             </Routes>
           </>
         ) : (

@@ -21,9 +21,8 @@ export default function ProfileEditPage({myProfile, setMyProfile}) {
   async function handleSubmit(evt) {
     evt.preventDefault();
     console.log(formData);
-    console.log("sent to utilities");
+    console.log("sent to uttilities");
     const submitRes = await update(formData);
-    console.log(submitRes);
     console.log("send back to user's profile page");
     //history.push('/profiles/:id');
   }
@@ -59,8 +58,8 @@ export default function ProfileEditPage({myProfile, setMyProfile}) {
           <label htmlFor="favoritePlanet">Favorite Planet:</label>
           <select
             id="favoritePlanet"
-            name="favPlanet"
-            value={formData.favPlanet}
+            name="favoritePlanet"
+            value={formData.favoritePlanet}
             onChange={handleChange}
           >
             <option value="mercury">Mercury</option>

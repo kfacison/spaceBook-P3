@@ -35,10 +35,14 @@ async function deleteProfile(req, res) {
 // Probably need to update to handle the submitted changes
 async function update(req, res) {
   console.log("Hit update controller");
-  console.log(`Req ${req.body.username}`)
-  const profile = await Profile.findOneAndUpdate({ user: req.user._id },(req.body), {new: true});
   try {
-    console.log(`New prof ${profile}`)
+    const profile = await Profile.findOneAndUpdate({ user: req.user._id },{
+      username: req.body.username,
+      bio: req.body.bio,
+      species: req.body.species,
+      favPlanet: req.body.favPlanet
+    }, {new: true});
+    await profile.save();
     res.json(profile);
   } catch {
     console.log(`Failed to retrieve user's profile`);
