@@ -1,5 +1,7 @@
+
 const Profile = require("../../models/profile");
 const User = require("../../models/user");
+
 
 module.exports = {
   createProfile,
@@ -42,7 +44,7 @@ async function update(req, res) {
     if(req.body.friends){
       //best behavor would be to add a spred of friends to add to exising friends
       const update = {friends: req.body.friends}
-      profile = await Profile.findOneAndUpdate({ user: req.user._id }, update, {new: true});
+      profile = await Profile.findOneAndUpdate({ _id : req.body._id }, update, {new: true});
     }
     else{
 

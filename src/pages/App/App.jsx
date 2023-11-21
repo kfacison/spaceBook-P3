@@ -52,7 +52,7 @@ export default function App() {
               {/*need id defined  ^^^^^ */}
               <Route
                 path="/profiles"
-                element={<AllProfiles myProfile={myProfile} />}
+                element={<AllProfiles myProfile={myProfile} setMyProfile={setMyProfile} />}
               />
               <Route path="/" element={<NewsFeed myProfile={myProfile} />} />
             </Routes>

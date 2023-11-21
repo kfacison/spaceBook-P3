@@ -1,11 +1,11 @@
 // import * as usersService from "../../utilities/users-service";
 import "./AllProfiles.css";
 import React, { useState, useEffect } from "react";
-
+import { update } from "../../utilities/profiles-api";
 import { getAll } from "../../utilities/profiles-api";
 import { Link } from "react-router-dom";
 
-const AllProfiles = () => {
+const AllProfiles = ({myProfile, setMyProfile}) => {
   const [allProfiles, setAllProfiles] = useState([]);
 
   useEffect(function () {
@@ -16,18 +16,28 @@ const AllProfiles = () => {
     }
     getAllProfiles();
   }, []);
+  
+ async function handleAddFriend(p){
+const newFriend = {
+  _id : myProfile._id, friends: p
+}
+const sendFriend = await update(newFriend)
+setMyProfile(sendFriend);
+  }
+  
   return (
     <div>
       <h1>User List</h1>
 
       <ul id="all-users-container">
-        {allProfiles.map((user) => (
-          <li key={user.id} className="avatar-container">
-            <Link to={"/profiles/" + user._id}>
+        {allProfiles.map((p) => (
+          <li key={p._id} className="avatar-container">
+            <Link to={"/profiles/" + p._id}>
               {" "}
               <div className="user-avatar">P</div>
-              <strong className="div-text">{user.username}</strong>
+              <strong className="div-text">{p.username}</strong>
             </Link>
+              <button onClick={() => handleAddFriend(p._id)}>Add Friend</button>
           </li>
         ))}
       </ul>
