@@ -17,14 +17,14 @@ export default function App() {
 
   const { theme } = useContext(ThemeContext);
 
-  const [myProfile, setMyProfile] = useState({});
+  const [myProfile, setMyProfile] = useState([]);
 
   useEffect(function () {
     async function getMyProfile() {
-      console.log('get myProf')
+      console.log("get myProf");
       const profile = await profilesAPI.getProfile(user);
-      console.log(profile)
-      setMyProfile(profile)
+      console.log(profile);
+      setMyProfile(profile);
     }
     getMyProfile();
   }, []);
@@ -36,10 +36,24 @@ export default function App() {
           <>
             <NavBar user={user} setUser={setUser} />
             <Routes>
-              <Route path="/profiles/:id" element={<Profile user={user} myProfile={myProfile} />} />
-              <Route path="/profiles/:id/edit" element={<ProfileEditPage myProfile={myProfile} setMyProfile= { setMyProfile } setUser={setUser}/>} />
+              <Route
+                path="/profiles/:id"
+                element={<Profile user={user} myProfile={myProfile} />}
+              />
+              <Route
+                path="/profiles/:id/edit"
+                element={
+                  <ProfileEditPage
+                    myProfile={myProfile}
+                    setMyProfile={setMyProfile}
+                  />
+                }
+              />
               {/*need id defined  ^^^^^ */}
-              <Route path="/profiles" element={<AllProfiles myProfile={myProfile} />} />
+              <Route
+                path="/profiles"
+                element={<AllProfiles myProfile={myProfile} />}
+              />
               <Route path="/" element={<NewsFeed myProfile={myProfile} />} />
             </Routes>
           </>
