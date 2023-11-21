@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 import { getAll } from "../../utilities/profiles-api";
 import { Link } from "react-router-dom";
 
+
 const AllProfiles = () => {
   const [allProfiles, setAllProfiles] = useState([]);
 
