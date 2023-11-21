@@ -20,6 +20,6 @@ router.delete('/:id', ensureLoggedIn, profilesCtrl.deleteProfile);
 
 
 // Route for adding a friend
-router.post('/', ensureLoggedIn, profilesCtrl.addFriend);
+// router.post('/', ensureLoggedIn, profilesCtrl.addFriend);
 
 module.exports = router;
