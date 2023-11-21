@@ -3,7 +3,8 @@ const Post = require('../../models/post');
 module.exports = {
     createPost,
     updatePost,
-    deletePost
+    deletePost,
+    getPosts
 }
 
 async function deletePost(req, res) {
@@ -15,8 +16,11 @@ async function updatePost(req, res) {
 }
 
 // Access through the Profiles route (bc it loads with the ProfilePage)
-async function getAll(req, res) {
+async function getPosts(req, res) {
     console.log("Hit getAll posts controller")
+    // Take the profileId (pass from the browser url) and get the profile doc (query Profiles)
+    // Take the posts array from the profile doc, and find all posts listed in that array (query & populate Posts)
+    // Send the array of post docs back to the page (which needs to update state)
 }
 
 async function createPost(req, res) {

@@ -7,18 +7,18 @@ const BASE_URL = '/api/profiles/:id/posts';
 // The "post" parameter needs to be an object with author, target, and content properties
 
 // Create a post
-export function createPost(post) {
-    return sendRequest(`${BASE_URL}/${post.target}`, 'POST', post)
+export function createPost(profile) {
+    return sendRequest(`${BASE_URL}/${profile}`, 'POST', profile)
 }
 
 // Edit a post -- REACH GOAL
-export function updatePost(post) {
-    return sendRequest(`${BASE_URL}/${post.target}`, 'PUT', post)
+export function updatePost(profile) {
+    return sendRequest(`${BASE_URL}/${profile}`, 'PUT', profile)
 }
 
 // Delete a post -- REACH GOAL
-export function deletePost(user) {
-    return sendRequest(`${BASE_URL}/${post.target}`, 'DELETE', post)
+export function deletePost(profile) {
+    return sendRequest(`${BASE_URL}/${profile}`, 'DELETE', profile)
 }
 
 // Get posts for profile (should this be handled by the profiles-api?)

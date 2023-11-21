@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext} from "react";
+import { useParams } from 'react-router-dom';
 import AboutMe from "../../components/AboutMe/AboutMe";
 import FriendsList from "../../components/FriendsList/FriendsList";
 import PostComponent from "../../components/PostComponent/PostComponent";
@@ -9,18 +10,25 @@ import { ThemeContext } from "../../contexts/ThemeContext";
 export default function Profile({ myProfile }) {
   const { theme, toggleTheme } = useContext(ThemeContext);
 
-  const [myPosts, setMyPosts] = useState([]);
+  let { id } = useParams()
+
+  // Using pagePosts as it should load the posts for the profile/:id-- not just the logged in user's profile
+  const [pagePosts, setPagePosts] = useState([]);
 
   // Function to retrieve all posts for the user's Profile page
   useEffect(function () {
-    async function getMyPosts() {
-      console.log("get my Posts");
-      const posts = await getPosts(myProfile._id);
+    async function getPagePosts() {
+      console.log("get profile page's Posts");
+      console.log(id);
+      // Get the array of posts from the page profile's posts array
+      // The controller then populates an array of posts documents from the profile's posts array
+      const posts = await getPosts(id);
       console.log(posts);
-      setMyPosts(posts);
+      // Set pagePosts state with the array of posts documents returned to the posts variable
+      setPagePosts(posts);
     }
-    getMyPosts();
-  }, [myProfile]);
+    getPagePosts();
+  }, []);
 
   return (
     <div id="profile-container">
@@ -29,7 +37,8 @@ export default function Profile({ myProfile }) {
       </div>
       <div id="profile-right-side">
         <FriendsList />
-        <PostComponent myPosts={ myPosts } setMyPosts={ setMyPosts }/>
+        {/* Need to pass down setPagePosts to update state when there is a new post */}
+        <PostComponent pagePosts={ pagePosts } setPagePosts={ setPagePosts }/>
       </div>
     </div>
   );
