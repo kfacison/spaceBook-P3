@@ -61,7 +61,7 @@ async function update(req, res) {
 
 async function getProfile(req, res) {
   console.log("Hit getProfile controller");
-  const profile = await Profile.find({ user: req.user._id });
+  const profile = await Profile.findOne({ user: req.user._id });
   try {
     res.json(profile);
   } catch {

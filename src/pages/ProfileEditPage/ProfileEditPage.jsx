@@ -8,11 +8,11 @@ export default function ProfileEditPage({myProfile, setMyProfile}) {
   const navigate = useNavigate();
   //const [formData, setFormData] = useState(myProfile);
   const [formData, setFormData] = useState({
-    user: myProfile[0].user,
-    username: myProfile[0].username,
-    species: myProfile[0].species ? myProfile[0].species : "",
-    favPlanet: myProfile[0].favPlanet ? myProfile[0].favPlanet : "mercury",
-    bio: myProfile[0].bio ? myProfile[0].bio : ""
+    user: myProfile.user,
+    username: myProfile.username,
+    species: myProfile.species ? myProfile.species : "",
+    favPlanet: myProfile.favPlanet ? myProfile.favPlanet : "mercury",
+    bio: myProfile.bio ? myProfile.bio : ""
   });
   function handleChange(evt) {
     const newFormData = { ...formData, [evt.target.name]: evt.target.value };
