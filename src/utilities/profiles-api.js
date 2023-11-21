@@ -23,3 +23,4 @@ export function getAll() {
 export function createProfile(user) {
   return sendRequest(`${BASE_URL}/${user._id}`, "POST");
 }
+
