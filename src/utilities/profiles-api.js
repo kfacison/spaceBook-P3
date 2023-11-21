@@ -1,6 +1,7 @@
 // Use sendRequest to handle fetch
 import sendRequest from './send-request';
 
+
 const BASE_URL = '/api/profiles';
 
 // Retrieve user's profile (controller accesses user via req)
@@ -23,3 +24,4 @@ export function getAll() {
 export function createProfile(user) {
     return sendRequest(`${BASE_URL}/${user._id}`, 'POST');
 }
+

@@ -26,7 +26,7 @@ export default function App() {
               <Route path="/profiles/:id" element={<Profile user={user} />} />
               <Route path="/profiles/:id/edit" element={<ProfileEditPage />} />
               {/*need id defined  ^^^^^ */}
-              <Route path="/profiles" element={<AllProfiles />} />
+              <Route path="/profiles" element={<AllProfiles user={user} />} />
               <Route path="/feed" element={<NewsFeed />} />
             </Routes>
           </>
