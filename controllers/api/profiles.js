@@ -1,5 +1,6 @@
 
 const Profile = require("../../models/profile");
+const User = require("../../models/user");
 
 
 module.exports = {
@@ -26,8 +27,9 @@ async function getAll(req, res) {
 // Does this need to delete the user?
 async function deleteProfile(req, res) {
   console.log("Hit deleteProfile controller");
-  const profile = await Profile.findByIdAndDelete({ user: req.user._id });
   try {
+    const profile = await Profile.findByIdAndDelete({ user: req.user._id });
+    const user = await User.findByIdAndDelete({ _id: req.user._id });
     // Probably an invalid response for a successful delete
     res.json(profile);
   } catch {

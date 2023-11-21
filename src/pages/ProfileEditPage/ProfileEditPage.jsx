@@ -25,8 +25,20 @@ export default function ProfileEditPage({ myProfile, setMyProfile }) {
     console.log("sent to uttilities");
     const submitRes = await update(formData);
     console.log(submitRes);
-    await setMyProfile([submitRes]);
-    return navigate("/profiles/:id");
+    await setMyProfile(submitRes);
+    return navigate("/profiles/"+myProfile.user);
+  }
+  async function handleDelete(){
+    if (window.confirm('Are you sure you want to delete this?')) {
+      // delete it!
+      console.log('profile should be deleted');
+      // const d = await deleteProfile();
+      // logOut();
+      // setUser(null);
+    } else {
+      // Do nothing!
+      console.log('back to edit profile');
+    }
   }
   return (
     <>
@@ -90,6 +102,9 @@ export default function ProfileEditPage({ myProfile, setMyProfile }) {
           <button type="submit">Submit</button>
         </div>
       </form>
+      <div>
+        <button id="deleteProfile" onClick={handleDelete}>Delete Profile</button>
+      </div>
     </>
   );
 }
