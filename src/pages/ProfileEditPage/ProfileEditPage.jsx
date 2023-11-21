@@ -23,6 +23,7 @@ export default function ProfileEditPage({myProfile, setMyProfile}) {
     console.log(formData);
     console.log("sent to uttilities");
     const submitRes = await update(formData);
+    setMyProfile([submitRes]);
     console.log("send back to user's profile page");
     //history.push('/profiles/:id');
   }

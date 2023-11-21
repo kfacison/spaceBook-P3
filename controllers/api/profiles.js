@@ -5,8 +5,9 @@ module.exports = {
   getProfile,
   update,
   deleteProfile,
-  getAll,
+  getAll
 };
+
 
 async function getAll(req, res) {
     console.log("Hit getAll controller")
@@ -36,13 +37,17 @@ async function deleteProfile(req, res) {
 async function update(req, res) {
   console.log("Hit update controller");
   try {
-    const profile = await Profile.findOneAndUpdate({ user: req.user._id },{
-      username: req.body.username,
+    const update = { username: req.body.username,
       bio: req.body.bio,
       species: req.body.species,
-      favPlanet: req.body.favPlanet
-    }, {new: true});
+      favPlanet: req.body.favPlanet}
+    // if (req.body.friends) {
+    //   update[friends].push(req.body.friends)
+    //   console.log(update);
+    // }
+    const profile = await Profile.findOneAndUpdate({ user: req.user._id }, {update}, {new: true});
     await profile.save();
+    console.log(profile);
     res.json(profile);
   } catch {
     console.log(`Failed to retrieve user's profile`);
