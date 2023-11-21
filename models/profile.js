@@ -14,10 +14,7 @@ const profileSchema = new Schema({
         required: true,
         default: 'Earthling'
     },
-    generation: {
-        type: String,
-        enum: ['Greatest Generation', 'Silent Generation', 'Boomer', 'Gen X', 'Millenials', 'Zoomer', 'Gen A']
-    },
+    species: String,
     favPlanet: {
         type: String,
         enum: ['mercury','venus','earth','mars','jupiter','saturn','uranus','neptune','pluto']

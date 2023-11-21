@@ -3,7 +3,7 @@ const Post = require('../../models/post');
 module.exports = {
     createPost,
     getAll,
-    update,
+    updatePost,
     deletePost
 }
 
@@ -11,7 +11,7 @@ async function deletePost(req, res) {
     console.log("Hit deletePost controller")
 }
 
-async function update(req, res) {
+async function updatePost(req, res) {
     console.log("Hit update post controller")
 }
 
@@ -21,4 +21,12 @@ async function getAll(req, res) {
 
 async function createPost(req, res) {
     console.log("Hit createPost  controller")
+    try {
+        const post = new Post({content: "content", author: "author", target: "target"})
+        await post.save();
+        console.log(post);
+        res.json(post);
+    } catch {
+        console.log(`Failed to create post`)
+    }
 }
