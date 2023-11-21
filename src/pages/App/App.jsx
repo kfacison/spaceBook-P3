@@ -37,7 +37,7 @@ export default function App() {
             <NavBar user={user} setUser={setUser} />
             <Routes>
               <Route path="/profiles/:id" element={<Profile user={user} myProfile={myProfile} />} />
-              <Route path="/profiles/:id/edit" element={<ProfileEditPage myProfile={myProfile} setMyProfile= { setMyProfile }/>} />
+              <Route path="/profiles/:id/edit" element={<ProfileEditPage myProfile={myProfile} setMyProfile= { setMyProfile } setUser={setUser}/>} />
               {/*need id defined  ^^^^^ */}
               <Route path="/profiles" element={<AllProfiles myProfile={myProfile} />} />
               <Route path="/" element={<NewsFeed myProfile={myProfile} />} />
