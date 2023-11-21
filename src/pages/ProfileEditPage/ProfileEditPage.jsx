@@ -25,8 +25,8 @@ export default function ProfileEditPage({myProfile, setMyProfile}) {
     console.log("sent to uttilities");
     const submitRes = await update(formData);
     console.log(submitRes);
-    await setMyProfile([submitRes]);
-    return navigate("/profiles/:id");
+    await setMyProfile(submitRes);
+    return navigate("/profiles/:"+myProfile.user);
   }
   return (
     <>
