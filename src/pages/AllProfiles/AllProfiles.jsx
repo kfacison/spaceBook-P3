@@ -5,7 +5,7 @@ import { update } from "../../utilities/profiles-api";
 import { getAll } from "../../utilities/profiles-api";
 import { Link } from "react-router-dom";
 
-const AllProfiles = () => {
+const AllProfiles = (myProfile, setMyProfile) => {
   const [allProfiles, setAllProfiles] = useState([]);
 
   useEffect(function () {
