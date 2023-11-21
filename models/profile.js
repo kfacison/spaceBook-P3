@@ -1,4 +1,5 @@
 const User = require('./user');
+const Post = require('./post');
 
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
@@ -26,6 +27,10 @@ const profileSchema = new Schema({
     friends: [{
         type: Schema.Types.ObjectId,
         ref: 'Profile'
+    }],
+    posts: [{
+        type: Schema.Types.ObjectId,
+        ref: Post
     }]
 }, {
     timestamps: true,
