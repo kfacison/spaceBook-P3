@@ -10,10 +10,6 @@ const postSchema = new Schema({
     author: {
         type: Schema.Types.ObjectId,
         ref: 'Profile'
-    },
-    target: {
-        type: Schema.Types.ObjectId,
-        ref: 'Profile'
     }
 })
 
