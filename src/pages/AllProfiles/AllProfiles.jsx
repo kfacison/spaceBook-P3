@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { addFriend } from "../../utilities/profiles-api";
 // import { getProfile } from "../../utilities/profiles-api";
 import { getAll } from "../../utilities/profiles-api";
-// import profile from "../../../models/profile";
+import { Link } from "react-router-dom";
 
 const AllProfiles = ({user}) => {
   const [allProfiles, setAllProfiles] = useState([]);
@@ -24,11 +24,13 @@ const AllProfiles = ({user}) => {
       <h1>User List</h1>
 
       <ul id="all-users-container">
-        {allProfiles.map((p) => (
-          <li key={p._id} className="avatar-container">
-            <div className="user-avatar">P</div>
-            <strong className="div-text">{p.username}(Add Link)</strong>
-            {/* <button onClick={() => handleAddFriend(p._id)}>Add Friend</button> */}
+        {allProfiles.map((user) => (
+          <li key={user.id} className="avatar-container">
+            <Link to={"/profiles/" + user._id}>
+              {" "}
+              <div className="user-avatar">P</div>
+              <strong className="div-text">{user.username}</strong>
+            </Link>
           </li>
         ))}
       </ul>

@@ -21,12 +21,12 @@ export default function NavBar({ user, setUser }) {
         All Users
       </Link>
       &nbsp; | &nbsp;
-      <Link to="/profiles/:id" className="nav-links">
+      <Link to={"/profiles/"+user._id} className="nav-links">
         Profile
       </Link>
       &nbsp; | &nbsp;
-      <Link to="/feed" className="nav-links">
-        Feed
+      <Link to="/" className="nav-links">
+      Home Page
       </Link>
       {/* <p>Welcome, {user.name}</p>  maybe we will use this */}
       <div id="right-side-navbar">
