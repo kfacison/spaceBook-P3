@@ -4,7 +4,6 @@ import FriendsList from "../../components/FriendsList/FriendsList";
 import PostComponent from "../../components/PostComponent/PostComponent";
 import "./Profile.css";
 
-
 import { ThemeContext } from "../../contexts/ThemeContext";
 export default function Profile({ myProfile }) {
   const { theme, toggleTheme } = useContext(ThemeContext);

@@ -3,6 +3,7 @@ import "./AllProfiles.css";
 import React, { useState, useEffect } from "react";
 
 import { getAll } from "../../utilities/profiles-api";
+import { Link } from "react-router-dom";
 
 const AllProfiles = () => {
   const [allProfiles, setAllProfiles] = useState([]);
@@ -22,8 +23,11 @@ const AllProfiles = () => {
       <ul id="all-users-container">
         {allProfiles.map((user) => (
           <li key={user.id} className="avatar-container">
-            <div className="user-avatar">P</div>
-            <strong className="div-text">{user.username}(Add Link)</strong>
+            <Link to={"/profiles/" + user._id}>
+              {" "}
+              <div className="user-avatar">P</div>
+              <strong className="div-text">{user.username}</strong>
+            </Link>
           </li>
         ))}
       </ul>

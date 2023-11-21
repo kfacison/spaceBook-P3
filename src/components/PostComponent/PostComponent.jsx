@@ -20,13 +20,13 @@ export default function PostComponent() {
           <ul id="old-posts-list">
             {" "}
             {/*ADD FUNCTION TO ITERATE OVER OLD POSTS AND EXTRACT THIS TO COMPONENT*/}
-            <li className="div-text">test</li>
+            <li>test</li>
             <hr></hr>
-            <li className="div-text">test</li>
+            <li>test</li>
             <hr></hr>
-            <li className="div-text">test</li>
+            <li>test</li>
             <hr></hr>
-            <li className="div-text">test</li>
+            <li>test</li>
             <hr></hr>
           </ul>
         </div>

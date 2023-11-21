@@ -83,3 +83,4 @@ async function createProfile(req, res) {
     console.log(`Failed to create user's profile`);
   }
 }
+
