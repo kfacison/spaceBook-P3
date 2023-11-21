@@ -37,15 +37,22 @@ async function deleteProfile(req, res) {
 async function update(req, res) {
   console.log("Hit update controller");
   try {
-    const update = { username: req.body.username,
-      bio: req.body.bio,
-      species: req.body.species,
-      favPlanet: req.body.favPlanet}
-    // if (req.body.friends) {
-    //   update[friends].push(req.body.friends)
-    //   console.log(update);
-    // }
-    const profile = await Profile.findOneAndUpdate({ user: req.user._id }, {update}, {new: true});
+    let profile;
+    if(req.body.friends){
+      //best behavor would be to add a spred of friends to add to exising friends
+      const update = {friends: req.body.friends}
+      profile = await Profile.findOneAndUpdate({ user: req.user._id }, update, {new: true});
+    }
+    else{
+
+      profile = await Profile.findOneAndUpdate({ user: req.user._id }, {
+        username: req.body.username,
+        bio: req.body.bio,
+        species: req.body.species,
+        favPlanet: req.body.favPlanet
+      }, {new: true});
+    }
+    // console.log(update);
     await profile.save();
     console.log(profile);
     res.json(profile);
@@ -56,7 +63,7 @@ async function update(req, res) {
 
 async function getProfile(req, res) {
   console.log("Hit getProfile controller");
-  const profile = await Profile.find({ user: req.user._id });
+  const profile = await Profile.findOne({ user: req.user._id });
   try {
     res.json(profile);
   } catch {
