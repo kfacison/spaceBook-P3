@@ -2,7 +2,6 @@ const Post = require('../../models/post');
 
 module.exports = {
     createPost,
-    getAll,
     updatePost,
     deletePost
 }
@@ -15,6 +14,7 @@ async function updatePost(req, res) {
     console.log("Hit update post controller")
 }
 
+// Access through the Profiles route (bc it loads with the ProfilePage)
 async function getAll(req, res) {
     console.log("Hit getAll posts controller")
 }

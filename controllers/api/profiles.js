@@ -8,8 +8,9 @@ module.exports = {
   getProfile,
   update,
   deleteProfile,
-  getAll,
+  getAll
 };
+
 
 async function getAll(req, res) {
     console.log("Hit getAll controller")
@@ -37,17 +38,18 @@ async function deleteProfile(req, res) {
 }
 
 // Probably need to update to handle the submitted changes
+// Req needs an object in the body
+// The object needs the user's Profile._id & properties to be updated
 async function update(req, res) {
   console.log("Hit update controller");
   try {
     let profile;
     if(req.body.friends){
-      //best behavor would be to add a spred of friends to add to exising friends
+      //best behavor would be to add a spread of friends to add to exising friends
       const update = {friends: req.body.friends}
       profile = await Profile.findOneAndUpdate({ _id : req.body._id }, update, {new: true});
     }
     else{
-
       profile = await Profile.findOneAndUpdate({ user: req.user._id }, {
         username: req.body.username,
         bio: req.body.bio,
@@ -57,6 +59,7 @@ async function update(req, res) {
     }
     // console.log(update);
     await profile.save();
+    console.log(profile);
     res.json(profile);
   } catch {
     console.log(`Failed to retrieve user's profile`);

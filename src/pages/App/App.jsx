@@ -27,7 +27,7 @@ export default function App() {
       setMyProfile(profile);
     }
     getMyProfile();
-  }, []);
+  }, [user]);
 
   return (
     <div data-theme={theme}>
