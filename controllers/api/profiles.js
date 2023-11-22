@@ -44,7 +44,7 @@ async function update(req, res) {
   console.log("Hit update controller");
   try {
     let profile;
-    if(req.user){
+    if(req.body.friends){
       //best behavor would be to add a spread of friends to add to exising friends
       const update = {friends: req.body.friends}
       console.log(req.body._id);
