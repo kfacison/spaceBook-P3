@@ -5,7 +5,7 @@ import { update } from "../../utilities/profiles-api";
 import { getAll } from "../../utilities/profiles-api";
 import { Link } from "react-router-dom";
 
-const AllProfiles = (myProfile, setMyProfile) => {
+const AllProfiles = ({myProfile, setMyProfile}) => {
   const [allProfiles, setAllProfiles] = useState([]);
 
   useEffect(function () {
@@ -21,6 +21,7 @@ const AllProfiles = (myProfile, setMyProfile) => {
 const newFriend = {
   _id : myProfile._id, friends: p
 }
+console.log(newFriend)
 const sendFriend = await update(newFriend)
 setMyProfile(sendFriend);
   }
