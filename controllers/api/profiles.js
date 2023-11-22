@@ -44,10 +44,18 @@ async function update(req, res) {
   console.log("Hit update controller");
   try {
     let profile;
-    if(req.body.friends){
+    if(req.user){
       //best behavor would be to add a spread of friends to add to exising friends
       const update = {friends: req.body.friends}
-      profile = await Profile.findOneAndUpdate({ _id : req.body._id }, update, {new: true});
+      console.log(req.body._id);
+      console.log(update);
+      profile = await Profile.findOne({ _id : req.body._id });
+      profile.friends.push(req.body.friends);
+      console.log(profile);
+      // const update = {friends: req.body.friends}
+      // console.log(req.body._id);
+      // console.log(update);
+      // profile = await Profile.findOneAndUpdate({ _id : req.body._id }, update, {new: true});
     }
     else{
       profile = await Profile.findOneAndUpdate({ user: req.user._id }, {

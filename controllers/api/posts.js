@@ -1,4 +1,5 @@
 const Post = require('../../models/post');
+const Profile = require("../../models/profile");
 
 module.exports = {
     createPost,
@@ -21,6 +22,15 @@ async function getPosts(req, res) {
     // Take the profileId (pass from the browser url) and get the profile doc (query Profiles)
     // Take the posts array from the profile doc, and find all posts listed in that array (query & populate Posts)
     // Send the array of post docs back to the page (which needs to update state)
+    console.log(req.params);
+    try {
+        const profile = await Profile.findOne({_id: req.body._id});
+        //const allPosts = profile.posts.populate();
+        //console.log(allPosts);
+        //res.json();
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 async function createPost(req, res) {
