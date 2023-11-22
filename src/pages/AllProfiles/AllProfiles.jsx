@@ -21,6 +21,7 @@ const AllProfiles = ({myProfile, setMyProfile}) => {
 const newFriend = {
   _id : myProfile._id, friends: p
 }
+console.log(newFriend)
 const sendFriend = await update(newFriend)
 setMyProfile(sendFriend);
   }
