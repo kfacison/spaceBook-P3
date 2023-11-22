@@ -19,13 +19,13 @@ export default function Profile({ myProfile }) {
   useEffect(function () {
     async function getPagePosts() {
       console.log("get profile page's Posts");
-      console.log(id);
+      //console.log(id);
       // Get the array of posts from the page profile's posts array
       // The controller then populates an array of posts documents from the profile's posts array
-      const posts = await getPosts(id);
-      console.log(posts);
-      // Set pagePosts state with the array of posts documents returned to the posts variable
-      setPagePosts(posts);
+      // const posts = await getPosts(id);
+      // console.log(posts);
+      // // Set pagePosts state with the array of posts documents returned to the posts variable
+      // setPagePosts(posts);
     }
     getPagePosts();
   }, []);
