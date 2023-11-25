@@ -1,27 +1,24 @@
-
 const Profile = require("../../models/profile");
 const User = require("../../models/user");
-
 
 module.exports = {
   createProfile,
   getProfile,
   update,
   deleteProfile,
-  getAll
+  getAll,
 };
 
-
 async function getAll(req, res) {
-    console.log("Hit getAll controller")
-    // Update later and set limit to 100 profiles
-    try{
-        const profiles = await Profile.find({});
-        // console.log(profiles);
-        res.status(200).json(profiles);
-    } catch {
-        console.log('Failed to retrieve all profiles');
-    }
+  console.log("Hit getAll controller");
+  // Update later and set limit to 100 profiles
+  try {
+    const profiles = await Profile.find({});
+    // console.log(profiles);
+    res.status(200).json(profiles);
+  } catch {
+    console.log("Failed to retrieve all profiles");
+  }
 }
 
 // Does this need to delete the user?
@@ -37,40 +34,41 @@ async function deleteProfile(req, res) {
   }
 }
 
-// Probably need to update to handle the submitted changes
-// Req needs an object in the body
-// The object needs the user's Profile._id & properties to be updated
 async function update(req, res) {
   console.log("Hit update controller");
   try {
     let profile;
-    if(req.body.friends){
-      //best behavor would be to add a spread of friends to add to exising friends
-      const update = {friends: req.body.friends}
-      console.log(req.body._id);
-      console.log(update);
-      profile = await Profile.findOne({ _id : req.body._id });
-      profile.friends.push(req.body.friends);
-      console.log(profile);
-      // const update = {friends: req.body.friends}
-      // console.log(req.body._id);
-      // console.log(update);
-      // profile = await Profile.findOneAndUpdate({ _id : req.body._id }, update, {new: true});
+    if (req.body.friends) {
+      profile = await Profile.findOne({ _id: req.body._id });
+      if (!profile) {
+        throw new Error("Profile not found");
+      }
+      // Adding new friends while avoiding duplicates
+      const newFriends = req.body.friends.filter(
+        (friendId) => !profile.friends.includes(friendId)
+      );
+      profile.friends.push(...newFriends);
+    } else {
+      profile = await Profile.findOneAndUpdate(
+        { user: req.user._id },
+        {
+          username: req.body.username,
+          bio: req.body.bio,
+          species: req.body.species,
+          favPlanet: req.body.favPlanet,
+        },
+        { new: true }
+      );
+      if (!profile) {
+        throw new Error("Profile not found");
+      }
     }
-    else{
-      profile = await Profile.findOneAndUpdate({ user: req.user._id }, {
-        username: req.body.username,
-        bio: req.body.bio,
-        species: req.body.species,
-        favPlanet: req.body.favPlanet
-      }, {new: true});
-    }
-    // console.log(update);
+
     await profile.save();
-    console.log(profile);
     res.json(profile);
-  } catch {
-    console.log(`Failed to retrieve user's profile`);
+  } catch (error) {
+    console.log(`Failed to retrieve/update user's profile:`, error);
+    res.status(500).send("Internal Server Error");
   }
 }
 
@@ -98,4 +96,3 @@ async function createProfile(req, res) {
     console.log(`Failed to create user's profile`);
   }
 }
-

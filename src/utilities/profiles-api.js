@@ -9,7 +9,7 @@ export function getProfile(user) {
 }
 
 export function update(formData) {
-    return sendRequest(`${BASE_URL}/${formData._id}`, 'PUT', formData)
+  return sendRequest(`${BASE_URL}/${formData._id}`, "PUT", formData);
 }
 
 export function deleteProfile(user) {
@@ -23,4 +23,3 @@ export function getAll() {
 export function createProfile(user) {
   return sendRequest(`${BASE_URL}/${user._id}`, "POST");
 }
-

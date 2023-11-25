@@ -28,9 +28,8 @@ const AllProfiles = ({ myProfile, setMyProfile }) => {
 
   async function handleAddFriend(friendId) {
     try {
-      const friendsArray = Array.isArray(myProfile.friends)
-        ? myProfile.friends
-        : [];
+      const friendsArray = myProfile.friends;
+
       if (myProfile._id === friendId) {
         console.error("Cannot add yourself as a friend");
         return;
@@ -51,6 +50,7 @@ const AllProfiles = ({ myProfile, setMyProfile }) => {
         friends: [...friendsArray, friendId],
       });
       setMyProfile(response);
+      console.log(myProfile.friends);
     } catch (error) {
       console.error("Error adding friend:", error);
       // Revert to the original state in case of an error
