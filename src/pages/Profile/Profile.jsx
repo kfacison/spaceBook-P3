@@ -38,7 +38,11 @@ export default function Profile({ myProfile }) {
       <div id="profile-right-side">
         <FriendsList myProfile={myProfile} />
         {/* Need to pass down setPagePosts to update state when there is a new post */}
-        <PostComponent pagePosts={pagePosts} setPagePosts={setPagePosts} />
+        <PostComponent
+          pagePosts={pagePosts}
+          setPagePosts={setPagePosts}
+          myProfile={myProfile}
+        />
       </div>
     </div>
   );
