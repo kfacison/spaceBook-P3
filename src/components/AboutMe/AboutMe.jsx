@@ -20,7 +20,7 @@ export default function AboutMe({ myProfile }) {
           <div className="about-me-cat">Bio: {myProfile.bio}</div>
         </div>
         {/* if the user have the same id them they can see the edit button {myProfile.user} */}
-        {id === myProfile._id ? (
+        {id === myProfile._id || id === myProfile.user ? (
           <Link
             to={"/profiles/" + myProfile.user + "/edit"}
             id="edit-profile-link"

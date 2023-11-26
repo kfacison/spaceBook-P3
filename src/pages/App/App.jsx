@@ -19,15 +19,18 @@ export default function App() {
 
   const [myProfile, setMyProfile] = useState([]);
 
-  useEffect(function () {
-    async function getMyProfile() {
-      console.log("get myProf");
-      const profile = await profilesAPI.getProfile(user);
-      console.log(profile);
-      setMyProfile(profile);
-    }
-    getMyProfile();
-  }, [user]);
+  useEffect(
+    function () {
+      async function getMyProfile() {
+        console.log("get myProf");
+        const profile = await profilesAPI.getProfile(user);
+        // console.log(profile);
+        setMyProfile(profile);
+      }
+      getMyProfile();
+    },
+    [user]
+  );
 
   return (
     <div data-theme={theme}>
@@ -52,7 +55,12 @@ export default function App() {
               {/*need id defined  ^^^^^ */}
               <Route
                 path="/profiles"
-                element={<AllProfiles myProfile={myProfile} setMyProfile={setMyProfile} />}
+                element={
+                  <AllProfiles
+                    myProfile={myProfile}
+                    setMyProfile={setMyProfile}
+                  />
+                }
               />
               <Route path="/" element={<NewsFeed myProfile={myProfile} />} />
             </Routes>

@@ -5,7 +5,6 @@ import axios from "axios";
 export default function FriendsList({ myProfile }) {
   const [friends, setFriends] = useState(myProfile.friends);
 
-  console.log(friends);
   return (
     <>
       <h3>BEST FRIENDS</h3>
