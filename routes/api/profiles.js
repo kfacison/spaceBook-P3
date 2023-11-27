@@ -8,7 +8,7 @@ const upload = multer({ dest: "uploads/" });
 // GET /api/profiles/:id
 router.get("/:id", ensureLoggedIn, profilesCtrl.getProfile);
 
-// router.get("/:id", ensureLoggedIn, profilesCtrl.getOther);
+router.get("/:id/other", ensureLoggedIn, profilesCtrl.getOther);
 
 // GET /api/profiles
 router.get("/", ensureLoggedIn, profilesCtrl.getAll);
