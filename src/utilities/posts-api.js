@@ -8,8 +8,8 @@ const BASE_URL = '/api/profiles/';
 // The "post" parameter needs to be an object with author, target, and content properties
 
 // Create a post
-export function createPost(profile) {
-    return sendRequest(`${BASE_URL}/${profile}`, 'POST', profile)
+export function createPost(profile, newPost) {
+    return sendRequest(`${BASE_URL}/${profile}`, 'POST', newPost)
 }
 
 // Edit a post -- REACH GOAL
