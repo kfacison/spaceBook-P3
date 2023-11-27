@@ -10,6 +10,7 @@ export default function ProfileEditPage({ myProfile, setMyProfile }) {
   //const [formData, setFormData] = useState(myProfile);
   const [formData, setFormData] = useState({
     user: myProfile.user,
+    avatar: myProfile.avatar,
     username: myProfile.username,
     species: myProfile.species ? myProfile.species : "",
     favPlanet: myProfile.favPlanet ? myProfile.favPlanet : "mercury",
