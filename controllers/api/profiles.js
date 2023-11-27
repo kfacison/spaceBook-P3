@@ -24,8 +24,9 @@ async function getAll(req, res) {
 }
 async function getOther(req, res) {
   try {
+    console.log("Hit getOther controller");
     const userId = req.params.id;
-    console.log(userId);
+    //console.log(userId);
 
     const profile = await Profile.findById(userId);
     if (!profile) {
@@ -33,7 +34,7 @@ async function getOther(req, res) {
     }
 
     res.send(profile);
-    console.log(profile);
+    //console.log(profile);
   } catch (err) {
     console.error(err);
     res.status(500).send("Error fetching profile");
@@ -115,7 +116,7 @@ async function update(req, res) {
       // Update other fields
       profile.username = req.body.username || profile.username;
 
-      req.body.avatar = req.file.path;
+      //req.body.avatar = req.file.path;
       profile.bio = req.body.bio || profile.bio;
       profile.species = req.body.species || profile.species;
       profile.favPlanet = req.body.favPlanet || profile.favPlanet;

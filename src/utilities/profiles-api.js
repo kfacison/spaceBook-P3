@@ -8,9 +8,9 @@ export function getProfile(user) {
   return sendRequest(`${BASE_URL}/${user._id}`);
 }
 
-// export function getOther(id) {
-//   return sendRequest(`${BASE_URL}/${id}`);
-// }
+export function getOther(id) {
+  return sendRequest(`${BASE_URL}/${id}/other`);
+}
 
 export function update(formData) {
   return sendRequest(`${BASE_URL}/${formData._id}`, "PUT", formData);
