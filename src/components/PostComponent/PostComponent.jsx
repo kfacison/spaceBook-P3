@@ -1,14 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./PostComponent.css";
 import { useParams } from "react-router-dom";
 
-export default function PostComponent({ myProfile }) {
+export default function PostComponent({ myProfile, otherProfile }) {
   let { id } = useParams();
-  console.log(id);
+  const [posts, setPosts] = useState([]);
+
+  const profileToUse = myProfile || otherProfile;
+
+  useEffect(() => {
+    if (profileToUse) {
+      setPosts(profileToUse.posts || []);
+    }
+  }, [myProfile, otherProfile]);
+
   return (
     <>
-      <div id="post-component-container">
-        {id === myProfile._id || id === myProfile.user ? (
+      {myProfile ? (
+        <div id="post-component-container">
           <div id="create-post-container">
             <form id="user-post-form-container">
               <textarea
@@ -18,24 +27,41 @@ export default function PostComponent({ myProfile }) {
               <button>POST</button>
             </form>
           </div>
-        ) : null}
-        TIMELINE
-        <div id="old-posts-container">
-          OLD POSTS
-          <ul id="old-posts-list">
-            {" "}
-            {/*ADD FUNCTION TO ITERATE OVER OLD POSTS AND EXTRACT THIS TO COMPONENT*/}
-            <li className="div-text">test</li>
-            <hr></hr>
-            <li className="div-text">test</li>
-            <hr></hr>
-            <li className="div-text">test</li>
-            <hr></hr>
-            <li className="div-text">test</li>
-            <hr></hr>
-          </ul>
+          TIMELINE
+          <div id="old-posts-container">
+            OLD POSTS
+            <ul id="old-posts-list">
+              {/* Iterate over old posts */}
+              <li className="div-text">test</li>
+              <hr />
+              <li className="div-text">test</li>
+              <hr />
+              <li className="div-text">test</li>
+              <hr />
+              <li className="div-text">test</li>
+              <hr />
+            </ul>
+          </div>
         </div>
-      </div>
+      ) : (
+        <div id="post-component-container">
+          TIMELINE
+          <div id="old-posts-container">
+            OLD POSTS
+            <ul id="old-posts-list">
+              {/* Iterate over old posts */}
+              <li className="div-text">test</li>
+              <hr />
+              <li className="div-text">test</li>
+              <hr />
+              <li className="div-text">test</li>
+              <hr />
+              <li className="div-text">test</li>
+              <hr />
+            </ul>
+          </div>
+        </div>
+      )}
     </>
   );
 }
