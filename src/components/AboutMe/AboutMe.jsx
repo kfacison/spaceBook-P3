@@ -2,11 +2,13 @@ import React from "react";
 import "./AboutMe.css";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { getToken } from "../../utilities/users-service";
 
 export default function AboutMe({ myProfile }) {
   let { id } = useParams();
 
-  console.log(id);
   return (
     <>
       <div id="profile-photo-container">div</div>

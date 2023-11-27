@@ -6,6 +6,8 @@ const ensureLoggedIn = require("../../config/ensureLoggedIn");
 // GET /api/profiles/:id
 router.get("/:id", ensureLoggedIn, profilesCtrl.getProfile);
 
+// router.get("/:id", ensureLoggedIn, profilesCtrl.getOther);
+
 // GET /api/profiles
 router.get("/", ensureLoggedIn, profilesCtrl.getAll);
 
