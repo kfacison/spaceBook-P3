@@ -9,17 +9,17 @@ const BASE_URL = '/api/profiles/';
 
 // Create a post
 export function createPost(profile, newPost) {
-    return sendRequest(`${BASE_URL}/${profile}`, 'POST', newPost)
+    return sendRequest(`${BASE_URL}/${profile}/posts`, 'POST', newPost)
 }
 
 // Edit a post -- REACH GOAL
 export function updatePost(profile) {
-    return sendRequest(`${BASE_URL}/${profile}`, 'PUT', profile)
+    return sendRequest(`${BASE_URL}${profile}/posts`, 'PUT', profile)
 }
 
 // Delete a post -- REACH GOAL
 export function deletePost(profile) {
-    return sendRequest(`${BASE_URL}/${profile}`, 'DELETE', profile)
+    return sendRequest(`${BASE_URL}${profile}/posts`, 'DELETE', profile)
 }
 
 // Get posts for profile (should this be handled by the profiles-api?)
