@@ -1,17 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import "./FriendsList.css";
+import axios from "axios";
 
-export default function FriendsList() {
+export default function FriendsList({ myProfile }) {
+  const [friends, setFriends] = useState(myProfile.friends);
+
   return (
     <>
       <h3>BEST FRIENDS</h3>
       <div id="friends-list-container">
-        <div className="friend"> F </div>
-        <div className="friend"> F </div>
-        <div className="friend"> F </div>
-        <div className="friend"> F </div>
-        <div className="friend"> F </div>
-        <div className="friend"> F </div>
+        {friends.slice(0, 6).map((friend, index) => (
+          <div key={index} className="friend">
+            {friend} {/* Display the username */}
+          </div>
+        ))}
       </div>
     </>
   );

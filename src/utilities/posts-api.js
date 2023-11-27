@@ -24,5 +24,7 @@ export function deletePost(profile) {
 // Get posts for profile (should this be handled by the profiles-api?)
 // Populate the pagePosts state with useEffect and the getProfile profiles-api
 export function getPosts(profile) {
+    // console.log(profile);
+    // return sendRequest(`api/profiles/${profile}/posts`)
     return sendRequest(BASE_URL, 'GET', profile)
 }
