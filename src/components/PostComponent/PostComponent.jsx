@@ -1,19 +1,24 @@
 import React from "react";
 import "./PostComponent.css";
+import { useParams } from "react-router-dom";
 
-export default function PostComponent() {
+export default function PostComponent({ myProfile }) {
+  let { id } = useParams();
+  console.log(id);
   return (
     <>
       <div id="post-component-container">
-        <div id="create-post-container">
-          <form id="user-post-form-container">
-            <textarea
-              id="user-post-form"
-              placeholder="What's on your mind?"
-            ></textarea>
-            <button>POST</button>
-          </form>
-        </div>
+        {id === myProfile._id || id === myProfile.user ? (
+          <div id="create-post-container">
+            <form id="user-post-form-container">
+              <textarea
+                id="user-post-form"
+                placeholder="What's on your mind?"
+              ></textarea>
+              <button>POST</button>
+            </form>
+          </div>
+        ) : null}
         TIMELINE
         <div id="old-posts-container">
           OLD POSTS

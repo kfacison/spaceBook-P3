@@ -11,10 +11,11 @@ nav {
   text-decoration: none;
 }
 
-img {
+#logo > img {
   margin-right: 50px;
   height: 50px;
   width: auto;
+  border: 2px;
 }
 
 .nav-links {
