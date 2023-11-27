@@ -1,5 +1,6 @@
 const Profile = require("../../models/profile");
 const User = require("../../models/user");
+const cloudinary = require("cloudinary").v2;
 
 module.exports = {
   createProfile,
@@ -51,41 +52,80 @@ async function deleteProfile(req, res) {
   }
 }
 
+// async function update(req, res) {
+//   console.log("Hit update controller");
+//   try {
+//     let profile;
+//     if (req.body.friends) {
+//       profile = await Profile.findOne({ _id: req.body._id });
+//       if (!profile) {
+//         throw new Error("Profile not found");
+//       }
+//       // Adding new friends while avoiding duplicates
+//       const newFriends = req.body.friends.filter(
+//         (friendId) => !profile.friends.includes(friendId)
+//       );
+//       profile.friends.push(...newFriends);
+//     } else {
+//       profile = await Profile.findOneAndUpdate(
+//         { user: req.user._id },
+//         {
+//           username: req.body.username,
+//           bio: req.body.bio,
+//           species: req.body.species,
+//           favPlanet: req.body.favPlanet,
+//         },
+//         { new: true }
+//       );
+//       if (!profile) {
+//         throw new Error("Profile not found");
+//       }
+//     }
+
+//     await profile.save();
+//     res.json(profile);
+//   } catch (error) {
+//     console.log(`Failed to retrieve/update user's profile:`, error);
+//     res.status(500).send("Internal Server Error");
+//   }
+// }
+
 async function update(req, res) {
   console.log("Hit update controller");
   try {
-    let profile;
+    let profile = await Profile.findOne({ user: req.user._id });
+    if (!profile) {
+      throw new Error("Profile not found");
+    }
+
+    // Handling file upload if exists
+    if (req.file) {
+      const result = await cloudinary.uploader.upload(req.file.path);
+      // Assuming 'avatar' is the field in your Profile model for the image URL
+      profile.avatar = result.secure_url;
+    }
+
+    // Handle adding new friends
     if (req.body.friends) {
-      profile = await Profile.findOne({ _id: req.body._id });
-      if (!profile) {
-        throw new Error("Profile not found");
-      }
-      // Adding new friends while avoiding duplicates
       const newFriends = req.body.friends.filter(
         (friendId) => !profile.friends.includes(friendId)
       );
       profile.friends.push(...newFriends);
     } else {
-      profile = await Profile.findOneAndUpdate(
-        { user: req.user._id },
-        {
-          username: req.body.username,
-          bio: req.body.bio,
-          species: req.body.species,
-          favPlanet: req.body.favPlanet,
-        },
-        { new: true }
-      );
-      if (!profile) {
-        throw new Error("Profile not found");
-      }
+      // Update other fields
+      profile.username = req.body.username || profile.username;
+
+      req.body.avatar = req.file.path;
+      profile.bio = req.body.bio || profile.bio;
+      profile.species = req.body.species || profile.species;
+      profile.favPlanet = req.body.favPlanet || profile.favPlanet;
     }
 
-    await profile.save();
-    res.json(profile);
+    await profile.save(); // Save the updated profile
+    res.json(profile); // Send back the updated profile
   } catch (error) {
-    console.log(`Failed to retrieve/update user's profile:`, error);
-    res.status(500).send("Internal Server Error");
+    console.error("Error in update controller:", error);
+    res.status(500).send("Error updating profile");
   }
 }
 

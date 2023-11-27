@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const profilesCtrl = require("../../controllers/api/profiles");
 const ensureLoggedIn = require("../../config/ensureLoggedIn");
+const multer = require("multer");
+const upload = multer({ dest: "uploads/" });
 
 // GET /api/profiles/:id
 router.get("/:id", ensureLoggedIn, profilesCtrl.getProfile);
@@ -15,7 +17,13 @@ router.get("/", ensureLoggedIn, profilesCtrl.getAll);
 router.post("/:id", ensureLoggedIn, profilesCtrl.createProfile);
 
 // PUT /api/profiles/:id
-router.put("/:id", ensureLoggedIn, profilesCtrl.update);
+router.put(
+  "/:id",
+  ensureLoggedIn,
+  upload.single("avatar"),
+  profilesCtrl.update
+);
+// router.put("/:id/edit", ensureLoggedIn, profilesCtrl.update);
 
 // DELETE /api/profiles/:id
 router.delete("/:id", ensureLoggedIn, profilesCtrl.deleteProfile);

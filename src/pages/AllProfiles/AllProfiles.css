@@ -3,18 +3,14 @@
   height: 500px;
   margin: auto;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  flex-direction: row;
+  justify-content: space-between;
   flex-wrap: wrap;
-  align-items: center;
-  margin-top: 30px;
+  align-items: flex-end;
   padding: 0;
 }
 
 .user-avatar {
-  border: 2px solid black;
-  padding: 10px;
-  margin: 10px;
   border-radius: 50%;
   display: flex;
   height: 50px;
@@ -25,5 +21,14 @@
 
 .avatar-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
+}
+
+.profile-avatar-all-page {
+  height: 50px;
+  width: 50px;
+
+  border: 2px solid black;
+  border-radius: 50%;
 }

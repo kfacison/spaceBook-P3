@@ -24,10 +24,9 @@
 #profile-photo-container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  margin: 0;
   height: 150px;
   width: 150px;
-  border: 2px solid black;
   border-radius: 50%;
   margin-bottom: 20px;
 }
@@ -47,4 +46,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.profile-avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 2px solid black;
 }

@@ -11,7 +11,16 @@ export default function AboutMe({ myProfile }) {
 
   return (
     <>
-      <div id="profile-photo-container">div</div>
+      <div id="profile-photo-container">
+        {" "}
+        {myProfile.avatar && (
+          <img
+            src={myProfile.avatar}
+            alt="Profile Avatar"
+            className="profile-avatar"
+          />
+        )}
+      </div>
       <div id="about-me-wrapper">
         <div id="about-me-box">
           <div className="about-me-cat">Name: {myProfile.username}</div>

@@ -10,6 +10,11 @@ const profileSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: User,
     },
+    avatar: {
+      type: String,
+      default:
+        "https://res.cloudinary.com/drobgciba/image/upload/v1701057029/nwwjxxvzxhzgdywbqlsc.png",
+    },
     username: {
       type: String,
       required: true,

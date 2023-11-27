@@ -7,6 +7,10 @@ import { Link } from "react-router-dom";
 
 const AllProfiles = ({ myProfile, setMyProfile }) => {
   const [allProfiles, setAllProfiles] = useState([]);
+  const [buttonTexts, setButtonTexts] = useState(() => {
+    // Get the state from localStorage or default to {}
+    return JSON.parse(localStorage.getItem("addedFriends")) || {};
+  });
 
   useEffect(function () {
     async function getAllProfiles() {
@@ -56,23 +60,39 @@ const AllProfiles = ({ myProfile, setMyProfile }) => {
       // Revert to the original state in case of an error
       setMyProfile(myProfile);
     }
+    setButtonTexts((prevState) => {
+      const newState = { ...prevState, [friendId]: "Added" };
+      localStorage.setItem("addedFriends", JSON.stringify(newState));
+      return newState;
+    });
   }
   return (
     <div>
       <h1>User List</h1>
-
-      <ul id="all-users-container">
-        {allProfiles.map((p) => (
-          <li key={p._id} className="avatar-container">
-            <Link to={"/profiles/" + p._id}>
-              {" "}
-              <div className="user-avatar">P</div>
-              <strong className="div-text">{p.username}</strong>
-            </Link>
-            <button onClick={() => handleAddFriend(p._id)}>Add Friend</button>
-          </li>
-        ))}
-      </ul>
+      <div id="all-users-container">
+        {allProfiles.map(
+          (p) =>
+            p._id !== myProfile._id && (
+              <div key={p._id} className="avatar-container">
+                <Link to={"/profiles/" + p._id}>
+                  <div className="user-avatar">
+                    {p.avatar && (
+                      <img
+                        src={p.avatar}
+                        alt="Profile Avatar"
+                        className="profile-avatar-all-page"
+                      />
+                    )}
+                  </div>
+                  <strong className="div-text">{p.username}</strong>
+                </Link>
+                <button onClick={() => handleAddFriend(p._id)}>
+                  {buttonTexts[p._id] || "Add Friend"}
+                </button>
+              </div>
+            )
+        )}
+      </div>
     </div>
   );
 };
