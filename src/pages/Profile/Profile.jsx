@@ -6,10 +6,11 @@ import PostComponent from "../../components/PostComponent/PostComponent";
 import "./Profile.css";
 import { getPosts } from "../../utilities/posts-api";
 import { ThemeContext } from "../../contexts/ThemeContext";
+import { getOther } from "../../utilities/profiles-api";
 
 export default function Profile({ myProfile }) {
   const { theme, toggleTheme } = useContext(ThemeContext);
-
+  const [otherProfile, setOtherProfile] = useState(false);
   let { id } = useParams();
 
   // Using pagePosts as it should load the posts for the profile/:id-- not just the logged in user's profile
