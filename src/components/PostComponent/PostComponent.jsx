@@ -1,10 +1,33 @@
 import React from "react";
+import { useEffect, useState } from "react";
 import "./PostComponent.css";
 import { useParams } from "react-router-dom";
+import { getPosts } from "../../utilities/posts-api";
 
 export default function PostComponent({ myProfile }) {
   let { id } = useParams();
-  console.log(id);
+  console.log(id)
+
+  // Using pagePosts as it should load the posts for the profile/:id-- not just the logged in user's profile
+  const [pagePosts, setPagePosts] = useState([]);
+
+  // Function to retrieve all posts for the user's Profile page
+  useEffect(function () {
+    async function getPagePosts() {
+      console.log("get profile page's Posts");
+      console.log(myProfile._id);
+      // Get the array of posts from the page profile's posts array
+      // The controller then populates an array of posts documents from the profile's posts array
+      const posts = await getPosts(myProfile._id);
+      // console.log(posts);
+      // // Set pagePosts state with the array of posts documents returned to the posts variable
+      setPagePosts(posts);
+    }
+    getPagePosts();
+  }, []);
+
+  const displayPosts = pagePosts.map((p, idx) => (<li key={idx} >{p.content} <br></br> Written by: {p.author}</li>))
+
   return (
     <>
       <div id="post-component-container">
@@ -23,16 +46,7 @@ export default function PostComponent({ myProfile }) {
         <div id="old-posts-container">
           OLD POSTS
           <ul id="old-posts-list">
-            {" "}
-            {/*ADD FUNCTION TO ITERATE OVER OLD POSTS AND EXTRACT THIS TO COMPONENT*/}
-            <li className="div-text">test</li>
-            <hr></hr>
-            <li className="div-text">test</li>
-            <hr></hr>
-            <li className="div-text">test</li>
-            <hr></hr>
-            <li className="div-text">test</li>
-            <hr></hr>
+            {displayPosts}
           </ul>
         </div>
       </div>
