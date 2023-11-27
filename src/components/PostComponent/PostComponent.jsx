@@ -24,7 +24,7 @@ export default function PostComponent({ myProfile }) {
       setPagePosts(posts);
     }
     getPagePosts();
-  }, []);
+  }, [myProfile]);
   
   // Handle inputs to new post textbox
   const [newPost, setNewPost] = useState({
@@ -43,7 +43,13 @@ export default function PostComponent({ myProfile }) {
     evt.preventDefault();
     const submitNewPost = await postsAPI.createPost(myProfile._id, newPost);
     console.log("Sending data to utilities");
-    await setPagePosts(submitNewPost);
+    await setPagePosts(...pagePosts, submitNewPost);
+    setNewPost({
+      content: "",
+      author: myProfile._id,
+      // For when routing works, pass the target profile, but don't pass to Mongoose
+      // target: id
+    });
   }
 
   // Display page's posts
@@ -56,7 +62,7 @@ export default function PostComponent({ myProfile }) {
           <div id="create-post-container">
             <form 
             onSubmit={handleSubmit} method="post" id="user-post-form-container">
-              <label htmlFor="content">Type your new post here:</label>
+              <label >Type your new post here:</label>
               <input
                 id="user-post-form"
                 name="content"

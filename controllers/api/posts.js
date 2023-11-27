@@ -40,12 +40,16 @@ async function createPost(req, res) {
         const post = new Post(req.body)
         await post.save();
         console.log(`Saved post: ${post}`);
+        console.log(req.body.author)
         // Save the post id into the profile's Posts array
+        const newPost = post._id
         // Need to update when profile url/id is fixed
-        const profile = await Profile.findOne({ user : req.body.author }).exec();
-        console.log(profile)
+        const profile = await Profile.findOne({ _id : req.body.author }).exec();
+        
         // Add the post to the target's/user's profile
-        profile.posts.push(post._id);
+        profile.posts.push(newPost);
+        await profile.save();
+        console.log(profile);
         profile.populate('posts')
         // Send back the profile's updated and populated posts
         res.json(profile.posts);
