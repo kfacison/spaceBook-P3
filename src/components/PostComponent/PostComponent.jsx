@@ -29,7 +29,9 @@ export default function PostComponent({ myProfile }) {
   // Handle inputs to new post textbox
   const [newPost, setNewPost] = useState({
     content: "",
-    author: myProfile._id
+    author: myProfile._id,
+    // For when routing works, pass the target profile, but don't pass to Mongoose
+    // target: id
   });
   function handleChange(evt) {
     const newPostContent = { ...newPost, [evt.target.name]: evt.target.value };

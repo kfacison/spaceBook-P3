@@ -1,5 +1,5 @@
 const Post = require('../../models/post');
-const Profile = require("../../models/profile");
+const Profile = require('../../models/profile');
 
 module.exports = {
     createPost,
@@ -35,14 +35,20 @@ async function getPosts(req, res) {
 
 async function createPost(req, res) {
     console.log("Hit createPost  controller")
+    console.log(req.body)
     try {
-        const post = new Post({content: req.body.content, author: "author"})
+        const post = new Post(req.body)
         await post.save();
-        console.log(post);
+        console.log(`Saved post: ${post}`);
         // Save the post id into the profile's Posts array
-        const profile = await Profile.findOne({ _id : req.body._id });
+        // Need to update when profile url/id is fixed
+        const profile = await Profile.findOne({ user : req.body.author }).exec();
+        console.log(profile)
+        // Add the post to the target's/user's profile
         profile.posts.push(post._id);
-        res.json(post);
+        profile.populate('posts')
+        // Send back the profile's updated and populated posts
+        res.json(profile.posts);
     } catch {
         console.log(`Failed to create post`)
     }
