@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useEffect, useState } from "react";
 import "./PostComponent.css";
 import { useParams } from "react-router-dom";
 import * as postsAPI from "../../utilities/posts-api";
@@ -87,15 +86,7 @@ export default function PostComponent({ myProfile, otherProfile }) {
           <div id="old-posts-container">
             OLD POSTS
             <ul id="old-posts-list">
-              {/* Iterate over old posts */}
-              <li className="div-text">test</li>
-              <hr />
-              <li className="div-text">test</li>
-              <hr />
-              <li className="div-text">test</li>
-              <hr />
-              <li className="div-text">test</li>
-              <hr />
+              {displayPosts}
             </ul>
           </div>
         </div>
@@ -106,14 +97,7 @@ export default function PostComponent({ myProfile, otherProfile }) {
             OLD POSTS
             <ul id="old-posts-list">
               {/* Iterate over old posts */}
-              <li className="div-text">test</li>
-              <hr />
-              <li className="div-text">test</li>
-              <hr />
-              <li className="div-text">test</li>
-              <hr />
-              <li className="div-text">test</li>
-              <hr />
+              {displayPosts}
             </ul>
           </div>
         </div>
