@@ -15,6 +15,25 @@ export default function Profile({ myProfile }) {
   // Using pagePosts as it should load the posts for the profile/:id-- not just the logged in user's profile
   const [pagePosts, setPagePosts] = useState([]);
 
+  useEffect(() => {
+    checkOther();
+    async function checkOther() {
+      //console.log(`the myProfile _id:${myProfile._id}, and myProfile.user:${myProfile.user} and, params id:${id}`);
+      //if params matches myProfile.user then nothing
+      if (myProfile.user === id) {
+        console.log("they are the same");
+        setOtherProfile(null);
+      } else {
+        //else get other profile
+        //console.log(`they diff `);
+        const other = await getOther(id);
+        await setOtherProfile(other);
+        //return other;
+        //console.log(otherProfile);
+      }
+    }
+  }, [id, myProfile.user]);
+
   // Function to retrieve all posts for the user's Profile page
   useEffect(function () {
     async function getPagePosts() {
@@ -31,19 +50,37 @@ export default function Profile({ myProfile }) {
   }, []);
 
   return (
-    <div id="profile-container">
-      <div id="profile-left-side">
-        <AboutMe myProfile={myProfile} />
-      </div>
-      <div id="profile-right-side">
-        <FriendsList myProfile={myProfile} />
-        {/* Need to pass down setPagePosts to update state when there is a new post */}
-        <PostComponent
-          pagePosts={pagePosts}
-          setPagePosts={setPagePosts}
-          myProfile={myProfile}
-        />
-      </div>
-    </div>
+    <>
+      {otherProfile ? (
+        <div id="profile-container">
+          <div id="profile-left-side">
+            <AboutMe otherProfile={otherProfile} />
+          </div>
+          <div id="profile-right-side">
+            <FriendsList otherProfile={otherProfile} />
+            <PostComponent
+              pagePosts={pagePosts}
+              setPagePosts={setPagePosts}
+              otherProfile={otherProfile}
+            />
+          </div>
+        </div>
+      ) : (
+        <div id="profile-container">
+          <div id="profile-left-side">
+            <AboutMe myProfile={myProfile} />
+          </div>
+          <div id="profile-right-side">
+            <FriendsList myProfile={myProfile} />
+            {/* Need to pass down setPagePosts to update state when there is a new post */}
+            <PostComponent
+              pagePosts={pagePosts}
+              setPagePosts={setPagePosts}
+              myProfile={myProfile}
+            />
+          </div>
+        </div>
+      )}
+    </>
   );
 }
