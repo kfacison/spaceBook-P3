@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import "./PostComponent.css";
 import { useParams } from "react-router-dom";
 import * as postsAPI from "../../utilities/posts-api";
+import PostLI from "../PostsLI/PostLI";
 
 export default function PostComponent({ myProfile }) {
   let { id } = useParams();
@@ -53,7 +54,7 @@ export default function PostComponent({ myProfile }) {
   }
 
   // Display page's posts
-  const displayPosts = pagePosts.map((p, idx) => (<li key={idx} >{p.content} <br></br> Written by: {p.author}</li>))
+  const displayPosts = pagePosts.map((p, idx) => (<PostLI key={idx} post={p.content} author={p.author}/>))
 
   return (
     <>
@@ -78,6 +79,7 @@ export default function PostComponent({ myProfile }) {
           OLD POSTS
           <ul id="old-posts-list">
             {displayPosts}
+            {/* <PostLI pagePosts={pagePosts}/> */}
           </ul>
         </div>
       </div>
