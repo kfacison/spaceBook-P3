@@ -60,8 +60,8 @@ export default function Profile({ myProfile }) {
           <div id="profile-right-side">
             <FriendsList otherProfile={otherProfile} />
             <PostComponent
-              pagePosts={pagePosts}
-              setPagePosts={setPagePosts}
+              // pagePosts={pagePosts}
+              // setPagePosts={setPagePosts}
               otherProfile={otherProfile}
             />
           </div>

@@ -16,7 +16,6 @@ export default function PostComponent({ myProfile, otherProfile }) {
   //   }
   // }, [myProfile, otherProfile]);
 
-  console.log(id);
 
   // Using pagePosts as it should load the posts for the profile/:id-- not just the logged in user's profile
 
@@ -28,11 +27,17 @@ export default function PostComponent({ myProfile, otherProfile }) {
         // console.log(myProfile._id);
         // Get the array of posts from the page profile's posts array
         // The controller then populates an array of posts documents from the profile's posts array
-        const posts = await postsAPI.getPosts(id);
-        console.log(posts);
+        if (myProfile) {
+          const posts = await postsAPI.getPosts(myProfile._id);
+          setPagePosts(posts);
+        } else {
+          const posts = await postsAPI.getPosts(id);
+          setPagePosts(posts);
+        }
+        // console.log(posts);
         // console.log(posts);
         // // Set pagePosts state with the array of posts documents returned to the posts variable
-        setPagePosts(posts);
+        
       }
       getPagePosts();
     },
