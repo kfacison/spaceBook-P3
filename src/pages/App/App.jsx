@@ -19,18 +19,18 @@ export default function App() {
 
   const [myProfile, setMyProfile] = useState([]);
 
-  useEffect(
-    function () {
-      async function getMyProfile() {
-        console.log("get myProf");
-        const profile = await profilesAPI.getProfile(user);
-        // console.log(profile);
-        setMyProfile(profile);
-      }
-      getMyProfile();
-    },
-    [user]
-  );
+  // useEffect(
+  //   function () {
+  //     async function getMyProfile() {
+  //       console.log("get myProf");
+  //       const profile = await profilesAPI.getProfile(user);
+  //       // console.log(profile);
+  //       setMyProfile(profile);
+  //     }
+  //     getMyProfile();
+  //   },
+  //   [user]
+  // );
 
   
 
@@ -69,7 +69,7 @@ export default function App() {
             </Routes>
           </>
         ) : (
-          <AuthPage setUser={setUser} />
+          <AuthPage setUser={setUser} setMyProfile={setMyProfile}/>
         )}
       </main>
     </div>
