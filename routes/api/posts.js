@@ -3,6 +3,8 @@ const router = express.Router();
 const postsCtrl = require("../../controllers/api/posts");
 const ensureLoggedIn = require("../../config/ensureLoggedIn");
 
+// FILE TO BE DELETED
+
 // Path in server.js is /profiles/:id/posts
 
 // GET /api/profiles/:id/posts

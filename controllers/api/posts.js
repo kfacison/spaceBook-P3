@@ -23,15 +23,19 @@ async function getPosts(req, res) {
   // Take the posts array from the profile doc, and find all posts listed in that array (query & populate Posts)
   // Send the array of post docs back to the page (which needs to update state)
   // console.log(req);
-  console.log(req.params.id, "what the heck");
+  console.log(req.params.id, "User id in req.params.id");
   try {
     // Populate the posts associated with the user
-    const profile = await Profile.findOne({ id: req.params.id }).populate(
+    const profile = await Profile.findOne({ _id : req.params.id }).populate(
       "posts"
     );
-
     console.log(profile);
-    res.json(profile.posts);
+    if (profile) {
+      res.json(profile.posts);
+    } else {
+      console.log("Sending back empty array")
+      res.json([])
+    }
   } catch (error) {
     console.log(error);
   }
