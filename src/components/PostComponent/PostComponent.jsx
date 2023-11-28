@@ -6,9 +6,15 @@ import PostLI from "../PostsLI/PostLI";
 
 export default function PostComponent({ myProfile, otherProfile }) {
   let { id } = useParams();
-  const [pagePosts, setPagePosts] = useState([]);
-  // const [profileToUsePosts, setProfileToUsePosts] = useState({});
   const profileToUse = myProfile || otherProfile;
+  const defaultNewPost = {
+    content: "",
+    author: profileToUse._id,
+  }
+  const [pagePosts, setPagePosts] = useState([]);
+  const [newPost, setNewPost] = useState(defaultNewPost);
+
+  // const [profileToUsePosts, setProfileToUsePosts] = useState({});
 
   // useEffect(() => {
   //   if (profileToUse) {
@@ -16,20 +22,18 @@ export default function PostComponent({ myProfile, otherProfile }) {
   //   }
   // }, [myProfile, otherProfile]);
 
-  // Using pagePosts as it should load the posts for the profile/:id-- not just the logged in user's profile
 
-  // Function to retrieve all posts for the user's Profile page
+
+  // Set the pagePosts state
   useEffect(
     function () {
       async function getPagePosts() {
-        console.log("get profile page's Posts");
-        // console.log(myProfile._id);
-        // Get the array of posts from the page profile's posts array
-        // The controller then populates an array of posts documents from the profile's posts array
         if (myProfile) {
+          // Pass in the the user's profile id (not the url id which is their user id)
           const posts = await postsAPI.getPosts(myProfile._id);
           setPagePosts(posts);
         } else {
+          // For all other users, pass the url id (which is their profile id)
           const posts = await postsAPI.getPosts(id);
           setPagePosts(posts);
         }
@@ -39,13 +43,8 @@ export default function PostComponent({ myProfile, otherProfile }) {
     [myProfile, profileToUse, id]
   );
 
+
   // Handle inputs to new post textbox
-  const [newPost, setNewPost] = useState({
-    content: "",
-    author: profileToUse._id,
-    // For when routing works, pass the target profile, but don't pass to Mongoose
-    // target: id
-  });
   function handleChange(evt) {
     const newPostContent = { ...newPost, [evt.target.name]: evt.target.value };
     setNewPost(newPostContent);
@@ -57,15 +56,10 @@ export default function PostComponent({ myProfile, otherProfile }) {
     const submitNewPost = await postsAPI.createPost(myProfile._id, newPost);
     console.log("Sending data to utilities");
     await setPagePosts(submitNewPost);
-    setNewPost({
-      content: "",
-      author: myProfile._id,
-      // For when routing works, pass the target profile, but don't pass to Mongoose
-      // target: id
-    });
+    setNewPost(defaultNewPost);
   }
 
-  // Display page's posts
+  // Map the pagePosts array into PostLI React element
   const displayPosts = pagePosts.map((p, idx) => (
     <PostLI key={idx} post={p.content} createdAt={p.createdAt} />
   ));
@@ -104,7 +98,6 @@ export default function PostComponent({ myProfile, otherProfile }) {
           <div id="old-posts-container">
             OLD POSTS
             <ul id="old-posts-list">
-              {/* Iterate over old posts */}
               {displayPosts}
             </ul>
           </div>
