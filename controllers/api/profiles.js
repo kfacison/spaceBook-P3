@@ -96,7 +96,7 @@ async function deleteProfile(req, res) {
 async function update(req, res) {
   console.log("Hit update controller");
   try {
-    let profile = await Profile.findOne({ user: req.user._id });
+    let profile = await Profile.findOne({ user: req.user?._id });
     if (!profile) {
       throw new Error("Profile not found");
     }
@@ -138,8 +138,8 @@ async function getProfile(req, res) {
     const userId = req.params.id;
 
     // If the ID in the params matches the logged-in user's ID or no ID is provided in the params
-    if (!userId || userId === req.user._id.toString()) {
-      const profile = await Profile.findOne({ user: req.user._id });
+    if (!userId || userId === req.user?._id.toString()) {
+      const profile = await Profile.findOne({ user: req.user?._id });
       if (!profile) {
         return res.status(404).send("Your profile not found");
       }
@@ -187,7 +187,7 @@ async function createProfile(req, res) {
   console.log("Hit createProfile controller");
   try {
     const profile = new Profile({
-      user: req.user._id,
+      user: req.user?._id,
       username: "Earthling",
     });
     await profile.save();
