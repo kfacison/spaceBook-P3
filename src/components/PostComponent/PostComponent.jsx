@@ -68,7 +68,7 @@ export default function PostComponent({ myProfile, otherProfile }) {
 
   // Display page's posts
   const displayPosts = pagePosts.map((p, idx) => (
-    <PostLI key={idx} post={p.content} author={p.author} />
+    <PostLI key={idx} post={p.content} createdAt={p.createdAt} />
   ));
 
   return (
