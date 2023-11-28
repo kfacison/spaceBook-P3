@@ -34,14 +34,10 @@ export default function PostComponent({ myProfile, otherProfile }) {
           const posts = await postsAPI.getPosts(id);
           setPagePosts(posts);
         }
-        // console.log(posts);
-        // console.log(posts);
-        // // Set pagePosts state with the array of posts documents returned to the posts variable
-        
       }
       getPagePosts();
     },
-    [myProfile, profileToUse]
+    [myProfile, profileToUse, id]
   );
 
   // Handle inputs to new post textbox
