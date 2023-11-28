@@ -12,12 +12,11 @@ export default function Profile({ myProfile }) {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const [otherProfile, setOtherProfile] = useState(false);
   let { id } = useParams();
-
-  // // Using pagePosts as it should load the posts for the profile/:id-- not just the logged in user's profile
-  // const [pagePosts, setPagePosts] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     checkOther();
+
     async function checkOther() {
       //console.log(`the myProfile _id:${myProfile._id}, and myProfile.user:${myProfile.user} and, params id:${id}`);
       //if params matches myProfile.user then nothing
@@ -34,21 +33,24 @@ export default function Profile({ myProfile }) {
       }
     }
   }, [id, myProfile]);
+  useEffect(() => {
+    setIsLoading(true);
+    const fetchProfileData = async () => {
+      if (id !== myProfile.user) {
+        const other = await getOther(id);
+        setOtherProfile(other);
+      } else {
+        setOtherProfile(null);
+      }
+      setIsLoading(false);
+    };
 
-  // // Function to retrieve all posts for the user's Profile page
-  // useEffect(function () {
-  //   async function getPagePosts() {
-  //     console.log("get profile page's Posts");
-  //     //console.log(id);
-  //     // Get the array of posts from the page profile's posts array
-  //     // The controller then populates an array of posts documents from the profile's posts array
-  //     // const posts = await getPosts(id);
-  //     // console.log(posts);
-  //     // // Set pagePosts state with the array of posts documents returned to the posts variable
-  //     // setPagePosts(posts);
-  //   }
-  //   getPagePosts();
-  // }, []);
+    fetchProfileData();
+  }, [id, myProfile.user]);
+
+  if (isLoading) {
+    return <div>Loading profile...</div>; // Or any other loading indicator
+  }
 
   return (
     <>

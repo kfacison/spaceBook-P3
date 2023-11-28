@@ -44,10 +44,8 @@ async function getOther(req, res) {
 async function deleteProfile(req, res) {
   console.log("Hit deleteProfile controller");
   try {
-    //console.log(req.params.id)
-    //const profile = await Profile.findOne({ user: req.params.id });
-    const profile = await Profile.findOneAndDelete({ user: req.params.id });
-    const user = await User.findOneAndDelete({ _id: req.params.id });
+    const profile = await Profile.findByIdAndDelete({ user: req.user._id });
+    const user = await User.findByIdAndDelete({ _id: req.user._id });
     // Probably an invalid response for a successful delete
     res.json(profile);
   } catch {
@@ -96,7 +94,7 @@ async function deleteProfile(req, res) {
 async function update(req, res) {
   console.log("Hit update controller");
   try {
-    let profile = await Profile.findOne({ user: req.user?._id });
+    let profile = await Profile.findOne({ user: req.user._id });
     if (!profile) {
       throw new Error("Profile not found");
     }
@@ -138,8 +136,8 @@ async function getProfile(req, res) {
     const userId = req.params.id;
 
     // If the ID in the params matches the logged-in user's ID or no ID is provided in the params
-    if (!userId || userId === req.user?._id.toString()) {
-      const profile = await Profile.findOne({ user: req.user?._id });
+    if (!userId || userId === req.user._id.toString()) {
+      const profile = await Profile.findOne({ user: req.user._id });
       if (!profile) {
         return res.status(404).send("Your profile not found");
       }
@@ -187,7 +185,7 @@ async function createProfile(req, res) {
   console.log("Hit createProfile controller");
   try {
     const profile = new Profile({
-      user: req.user?._id,
+      user: req.user._id,
       username: "Earthling",
     });
     await profile.save();

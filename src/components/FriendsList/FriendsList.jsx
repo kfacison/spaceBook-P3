@@ -35,7 +35,7 @@ export default function FriendsList({ myProfile, otherProfile }) {
           ))}
         </div>
       ) : (
-        <h4>{profileToUse?.username} has no friends 🤣</h4>
+        <h4> </h4>
       )}
     </>
   );
