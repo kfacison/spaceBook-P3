@@ -9,6 +9,7 @@ export default function NavBar({ user, setUser, myProfile }) {
     userService.logOut();
     // Update state will also cause a re-render
     setUser(null);
+    
   }
   const { toggleTheme } = useContext(ThemeContext);
 
@@ -21,7 +22,7 @@ export default function NavBar({ user, setUser, myProfile }) {
         All Users
       </Link>
       &nbsp; | &nbsp;
-      <Link to={"/profiles/" + user._id} className="nav-links">
+      <Link to={"/profiles/"+user?._id} className="nav-links">
         Profile
       </Link>
       &nbsp; | &nbsp;
