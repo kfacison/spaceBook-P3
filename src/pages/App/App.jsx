@@ -51,6 +51,7 @@ export default function App() {
                   <ProfileEditPage
                     myProfile={myProfile}
                     setMyProfile={setMyProfile}
+                    setUser={setUser}
                   />
                 }
               />
