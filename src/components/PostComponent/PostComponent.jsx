@@ -16,7 +16,6 @@ export default function PostComponent({ myProfile, otherProfile }) {
   //   }
   // }, [myProfile, otherProfile]);
 
-
   // Using pagePosts as it should load the posts for the profile/:id-- not just the logged in user's profile
 
   // Function to retrieve all posts for the user's Profile page
@@ -57,7 +56,7 @@ export default function PostComponent({ myProfile, otherProfile }) {
     evt.preventDefault();
     const submitNewPost = await postsAPI.createPost(myProfile._id, newPost);
     console.log("Sending data to utilities");
-    await setPagePosts(...pagePosts, submitNewPost);
+    await setPagePosts(submitNewPost);
     setNewPost({
       content: "",
       author: myProfile._id,
@@ -68,12 +67,12 @@ export default function PostComponent({ myProfile, otherProfile }) {
 
   // Display page's posts
   const displayPosts = pagePosts.map((p, idx) => (
-    <PostLI key={idx} post={p.content} author={p.author} />
+    <PostLI key={idx} post={p.content} createdAt={p.createdAt} />
   ));
 
   return (
     <>
-      {myProfile ? (
+      {myProfile && id === myProfile.user ? (
         <div id="post-component-container">
           <div id="create-post-container">
             <form

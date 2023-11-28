@@ -33,7 +33,7 @@ export default function Profile({ myProfile }) {
         //console.log(otherProfile);
       }
     }
-  }, [id, myProfile.user]);
+  }, [id, myProfile]);
 
   // // Function to retrieve all posts for the user's Profile page
   // useEffect(function () {
