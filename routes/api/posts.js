@@ -1,21 +1,20 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const postsCtrl = require('../../controllers/api/posts');
-const ensureLoggedIn = require('../../config/ensureLoggedIn');
+const postsCtrl = require("../../controllers/api/posts");
+const ensureLoggedIn = require("../../config/ensureLoggedIn");
 
 // Path in server.js is /profiles/:id/posts
 
 // GET /api/profiles/:id/posts
-router.get('/', ensureLoggedIn, postsCtrl.getPosts);
+router.get("/", ensureLoggedIn, postsCtrl.getPosts);
 
 // POST /api/profiles/:id/posts
-router.post('/', ensureLoggedIn, postsCtrl.createPost);
+router.post("/", ensureLoggedIn, postsCtrl.createPost);
 
 // PUT /api/profiles/:id/posts
-router.put('/', ensureLoggedIn, postsCtrl.updatePost);
+router.put("/", ensureLoggedIn, postsCtrl.updatePost);
 
 // DELETE /api/profiles/:id/posts
-router.delete('/', ensureLoggedIn, postsCtrl.deletePost);
-
+router.delete("/", ensureLoggedIn, postsCtrl.deletePost);
 
 module.exports = router;
