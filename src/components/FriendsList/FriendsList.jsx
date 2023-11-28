@@ -26,7 +26,7 @@ export default function FriendsList({ myProfile, otherProfile }) {
       {friends.length > 0 ? (
         <div id="friends-list-container">
           {friends.slice(0, 6).map((friend, index) => (
-            <Link to={"/profiles/" + friend._id}>
+            <Link to={"/profiles/" + friend._id} id="friend-list-avatar">
               <div key={index} className="friend">
                 <img src={friend.avatar} alt={`${friend.username}'s avatar`} />
                 <span>{friend.username}</span>

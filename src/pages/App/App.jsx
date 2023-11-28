@@ -32,14 +32,12 @@ export default function App() {
   //   [user]
   // );
 
-  
-
   return (
     <div data-theme={theme}>
       <main className="App">
         {user ? (
           <>
-            <NavBar user={user} setUser={setUser} />
+            <NavBar user={user} setUser={setUser} myProfile={myProfile} />
             <Routes>
               <Route
                 path="/profiles/:id"

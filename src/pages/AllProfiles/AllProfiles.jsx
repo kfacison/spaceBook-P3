@@ -6,11 +6,9 @@ import { getAll } from "../../utilities/profiles-api";
 import { Link } from "react-router-dom";
 
 const AllProfiles = ({ myProfile, setMyProfile }) => {
+  const localStorageKey = `addedFriends-${myProfile._id}`;
+
   const [allProfiles, setAllProfiles] = useState([]);
-  const [buttonTexts, setButtonTexts] = useState(() => {
-    // Get the state from localStorage or default to {}
-    return JSON.parse(localStorage.getItem("addedFriends")) || {};
-  });
 
   useEffect(function () {
     async function getAllProfiles() {
@@ -60,19 +58,17 @@ const AllProfiles = ({ myProfile, setMyProfile }) => {
       // Revert to the original state in case of an error
       setMyProfile(myProfile);
     }
-    setButtonTexts((prevState) => {
-      const newState = { ...prevState, [friendId]: "Added" };
-      localStorage.setItem("addedFriends", JSON.stringify(newState));
-      return newState;
-    });
   }
   return (
     <div>
       <h1>User List</h1>
       <div id="all-users-container">
-        {allProfiles.map(
-          (p) =>
-            p._id !== myProfile._id && (
+        {allProfiles.map((p) => {
+          // Check if this profile is in the current user's friends list
+          const isFriend = myProfile.friends.includes(p._id);
+
+          if (p._id !== myProfile._id) {
+            return (
               <div key={p._id} className="avatar-container">
                 <Link to={"/profiles/" + p._id}>
                   <div className="user-avatar">
@@ -87,11 +83,13 @@ const AllProfiles = ({ myProfile, setMyProfile }) => {
                   <strong className="div-text">{p.username}</strong>
                 </Link>
                 <button onClick={() => handleAddFriend(p._id)}>
-                  {buttonTexts[p._id] || "Add Friend"}
+                  {isFriend ? "Added" : "Add Friend"}
                 </button>
               </div>
-            )
-        )}
+            );
+          }
+          return null;
+        })}
       </div>
     </div>
   );
