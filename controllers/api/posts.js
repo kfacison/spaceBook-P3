@@ -58,7 +58,7 @@ async function createPost(req, res) {
     profile.posts.push(newPost);
     await profile.save();
     console.log(profile);
-    profile.populate("posts");
+    await profile.populate("posts");
     // Send back the profile's updated and populated posts
     res.json(profile.posts);
   } catch {

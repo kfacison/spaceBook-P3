@@ -7,7 +7,7 @@ export default function PostLI({ post, createdAt }) {
   return (
     <li>
       {post}
-      <br></br>Written on: {date.toLocaleString('default', { month: 'long', day: 'numeric', year:'numeric' })}
+      <br></br>Posted {date.toLocaleString()}
     </li>
   );
 }
