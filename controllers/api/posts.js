@@ -54,7 +54,7 @@ async function createPost(req, res) {
     const profile = await Profile.findOne({ _id: req.body.author }).exec();
 
     // Add the post to the target's/user's profile
-    profile.posts.push(newPost);
+    profile.posts.unshift(newPost);
     await profile.save();
     await profile.populate("posts");
     console.log(profile.posts);
