@@ -1,11 +1,13 @@
 import "./ProfileEditPage.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { update } from "../../utilities/profiles-api";
+import { update, deleteProfile } from "../../utilities/profiles-api";
 import sendRequest from "../../utilities/send-request";
+import {logOut} from "../../utilities/users-service";
+
 
 //if profile is already populated them show that as value
-export default function ProfileEditPage({ myProfile, setMyProfile }) {
+export default function ProfileEditPage({ myProfile, setMyProfile, setUser }) {
   const navigate = useNavigate();
   //const [formData, setFormData] = useState(myProfile);
   const [formData, setFormData] = useState({
@@ -54,9 +56,11 @@ export default function ProfileEditPage({ myProfile, setMyProfile }) {
     if (window.confirm("Are you sure you want to delete this?")) {
       // delete it!
       console.log("profile should be deleted");
-      // const d = await deleteProfile();
-      // logOut();
-      // setUser(null);
+      const d = await deleteProfile(myProfile.user);
+      navigate("/");
+      logOut();
+      setUser(null);
+      //console.log(d);
     } else {
       // Do nothing!
       console.log("back to edit profile");
