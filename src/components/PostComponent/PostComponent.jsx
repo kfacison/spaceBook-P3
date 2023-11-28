@@ -16,7 +16,6 @@ export default function PostComponent({ myProfile, otherProfile }) {
   //   }
   // }, [myProfile, otherProfile]);
 
-
   // Using pagePosts as it should load the posts for the profile/:id-- not just the logged in user's profile
 
   // Function to retrieve all posts for the user's Profile page
@@ -73,7 +72,7 @@ export default function PostComponent({ myProfile, otherProfile }) {
 
   return (
     <>
-      {myProfile ? (
+      {myProfile && id === myProfile.user ? (
         <div id="post-component-container">
           <div id="create-post-container">
             <form
