@@ -47,7 +47,6 @@ async function createPost(req, res) {
   try {
     const post = new Post(req.body);
     await post.save();
-    console.log(`Saved post: ${post}`);
     console.log(req.body.author);
     // Save the post id into the profile's Posts array
     const newPost = post._id;
@@ -57,8 +56,8 @@ async function createPost(req, res) {
     // Add the post to the target's/user's profile
     profile.posts.push(newPost);
     await profile.save();
-    console.log(profile);
     await profile.populate("posts");
+    console.log(profile.posts);
     // Send back the profile's updated and populated posts
     res.json(profile.posts);
   } catch {

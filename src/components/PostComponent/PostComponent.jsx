@@ -57,7 +57,7 @@ export default function PostComponent({ myProfile, otherProfile }) {
     evt.preventDefault();
     const submitNewPost = await postsAPI.createPost(myProfile._id, newPost);
     console.log("Sending data to utilities");
-    await setPagePosts(...pagePosts, submitNewPost);
+    await setPagePosts(submitNewPost);
     setNewPost({
       content: "",
       author: myProfile._id,
