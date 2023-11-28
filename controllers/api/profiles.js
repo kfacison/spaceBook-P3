@@ -44,12 +44,21 @@ async function getOther(req, res) {
 async function deleteProfile(req, res) {
   console.log("Hit deleteProfile controller");
   try {
-    //console.log(req.params.id)
-    //const profile = await Profile.findOne({ user: req.params.id });
-    const profile = await Profile.findOneAndDelete({ user: req.params.id });
-    const user = await User.findOneAndDelete({ _id: req.params.id });
+    const allProfiles = await Profile.find({friends: [req.params.id]});
+    console.log(allProfiles);
+    allProfiles.forEach((p)=>{
+      console.log(req.params.id)
+      console.log(p.friends);
+      // if(p.friends.includes(req.params.id)){
+      //   const indexOf = p.friends.findIndex(req.params.id);
+      //   console.log(indexOf);
+      //   p.friends.splice(indexOf,1);
+      // }
+    });
+    // const profile = await Profile.findOneAndDelete({ user: req.params.id });
+    // const user = await User.findOneAndDelete({ _id: req.params.id });
     // Probably an invalid response for a successful delete
-    res.json(profile);
+    res.json(allProfiles);
   } catch {
     console.log(`Failed to retrieve user's profile`);
   }

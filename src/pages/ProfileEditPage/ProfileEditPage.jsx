@@ -57,9 +57,9 @@ export default function ProfileEditPage({ myProfile, setMyProfile, setUser }) {
       // delete it!
       console.log("profile should be deleted");
       const d = await deleteProfile(myProfile.user);
-      navigate("/");
-      logOut();
-      setUser(null);
+      // navigate("/");
+      // logOut();
+      // setUser(null);
       //console.log(d);
     } else {
       // Do nothing!
