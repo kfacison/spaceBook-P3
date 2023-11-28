@@ -1,18 +1,24 @@
 import React, { useState, useEffect } from "react";
 import "./FriendsList.css";
-
+import { getOther } from "../../utilities/profiles-api"; // Adjust this import based on your actual API utility functions
+import { Link } from "react-router-dom";
 export default function FriendsList({ myProfile, otherProfile }) {
   const [friends, setFriends] = useState([]);
 
-  // Determine which profile to use
   const profileToUse = myProfile || otherProfile;
 
   useEffect(() => {
-    // Set friends based on the chosen profile
-    if (profileToUse) {
-      setFriends(profileToUse.friends || []);
-    }
-  }, [myProfile, otherProfile, profileToUse]);
+    const fetchFriendsDetails = async () => {
+      if (profileToUse && profileToUse.friends) {
+        const friendsProfiles = await Promise.all(
+          profileToUse.friends.map((friendId) => getOther(friendId)) // Assuming getProfile is your API utility to fetch a user profile by ID
+        );
+        setFriends(friendsProfiles);
+      }
+    };
+
+    fetchFriendsDetails();
+  }, [profileToUse]);
 
   return (
     <>
@@ -20,13 +26,16 @@ export default function FriendsList({ myProfile, otherProfile }) {
       {friends.length > 0 ? (
         <div id="friends-list-container">
           {friends.slice(0, 6).map((friend, index) => (
-            <div key={index} className="friend">
-              {friend} {/* Assuming 'friend' is a string like a username */}
-            </div>
+            <Link to={"/profiles/" + friend._id}>
+              <div key={index} className="friend">
+                <img src={friend.avatar} alt={`${friend.username}'s avatar`} />
+                <span>{friend.username}</span>
+              </div>
+            </Link>
           ))}
         </div>
       ) : (
-        <h4>{profileToUse.username} has no friends 🤣 </h4>
+        <h4>{profileToUse?.username} has no friends 🤣</h4>
       )}
     </>
   );

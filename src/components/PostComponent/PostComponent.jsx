@@ -6,40 +6,43 @@ import PostLI from "../PostsLI/PostLI";
 
 export default function PostComponent({ myProfile, otherProfile }) {
   let { id } = useParams();
-  const [posts, setPosts] = useState([]);
-
+  const [pagePosts, setPagePosts] = useState([]);
+  // const [profileToUsePosts, setProfileToUsePosts] = useState({});
   const profileToUse = myProfile || otherProfile;
 
-  useEffect(() => {
-    if (profileToUse) {
-      setPosts(profileToUse.posts || []);
-    }
-  }, [myProfile, otherProfile]);
+  // useEffect(() => {
+  //   if (profileToUse) {
+  //     setPagePosts(profileToUse.posts || []);
+  //   }
+  // }, [myProfile, otherProfile]);
 
-  console.log(id)
+  console.log(id);
 
   // Using pagePosts as it should load the posts for the profile/:id-- not just the logged in user's profile
-  const [pagePosts, setPagePosts] = useState([]);
 
   // Function to retrieve all posts for the user's Profile page
-  useEffect(function () {
-    async function getPagePosts() {
-      console.log("get profile page's Posts");
-      console.log(myProfile._id);
-      // Get the array of posts from the page profile's posts array
-      // The controller then populates an array of posts documents from the profile's posts array
-      const posts = await postsAPI.getPosts(myProfile._id);
-      // console.log(posts);
-      // // Set pagePosts state with the array of posts documents returned to the posts variable
-      setPagePosts(posts);
-    }
-    getPagePosts();
-  }, [myProfile]);
-  
+  useEffect(
+    function () {
+      async function getPagePosts() {
+        console.log("get profile page's Posts");
+        // console.log(myProfile._id);
+        // Get the array of posts from the page profile's posts array
+        // The controller then populates an array of posts documents from the profile's posts array
+        const posts = await postsAPI.getPosts(id);
+        console.log(posts);
+        // console.log(posts);
+        // // Set pagePosts state with the array of posts documents returned to the posts variable
+        setPagePosts(posts);
+      }
+      getPagePosts();
+    },
+    [myProfile, profileToUse]
+  );
+
   // Handle inputs to new post textbox
   const [newPost, setNewPost] = useState({
     content: "",
-    author: myProfile._id,
+    author: profileToUse._id,
     // For when routing works, pass the target profile, but don't pass to Mongoose
     // target: id
   });
@@ -63,21 +66,28 @@ export default function PostComponent({ myProfile, otherProfile }) {
   }
 
   // Display page's posts
-  const displayPosts = pagePosts.map((p, idx) => (<PostLI key={idx} post={p.content} author={p.author}/>))
+  const displayPosts = pagePosts.map((p, idx) => (
+    <PostLI key={idx} post={p.content} author={p.author} />
+  ));
 
   return (
     <>
       {myProfile ? (
         <div id="post-component-container">
           <div id="create-post-container">
-            <form 
-            onSubmit={handleSubmit} method="post" id="user-post-form-container">
-              <label >Type your new post here:</label>
+            <form
+              onSubmit={handleSubmit}
+              method="post"
+              id="user-post-form-container"
+            >
+              <label>Type your new post here:</label>
               <input
                 id="user-post-form"
                 name="content"
                 type="text"
-                placeholder="What's on your mind?" value={newPost.content} onChange={handleChange}
+                placeholder="What's on your mind?"
+                value={newPost.content}
+                onChange={handleChange}
               ></input>
               <button>POST</button>
             </form>
@@ -85,9 +95,7 @@ export default function PostComponent({ myProfile, otherProfile }) {
           TIMELINE
           <div id="old-posts-container">
             OLD POSTS
-            <ul id="old-posts-list">
-              {displayPosts}
-            </ul>
+            <ul id="old-posts-list">{displayPosts}</ul>
           </div>
         </div>
       ) : (
