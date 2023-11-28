@@ -44,8 +44,10 @@ async function getOther(req, res) {
 async function deleteProfile(req, res) {
   console.log("Hit deleteProfile controller");
   try {
-    const profile = await Profile.findByIdAndDelete({ user: req.user?._id });
-    const user = await User.findByIdAndDelete({ _id: req.user?._id });
+    //console.log(req.params.id)
+    //const profile = await Profile.findOne({ user: req.params.id });
+    const profile = await Profile.findOneAndDelete({ user: req.params.id });
+    const user = await User.findOneAndDelete({ _id: req.params.id });
     // Probably an invalid response for a successful delete
     res.json(profile);
   } catch {

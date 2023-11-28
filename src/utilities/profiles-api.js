@@ -17,7 +17,7 @@ export function update(formData) {
 }
 
 export function deleteProfile(user) {
-  return sendRequest(`${BASE_URL}/${user?._id}`, "DELETE");
+  return sendRequest(`${BASE_URL}/${user}`, "DELETE");
 }
 
 export function getAll() {
