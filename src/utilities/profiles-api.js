@@ -5,7 +5,7 @@ const BASE_URL = "/api/profiles";
 
 // Retrieve user's profile (controller accesses user via req)
 export function getProfile(user) {
-  return sendRequest(`${BASE_URL}/${user._id}`);
+  return sendRequest(`${BASE_URL}/${user?._id}`);
 }
 
 export function getOther(id) {
@@ -17,7 +17,7 @@ export function update(formData) {
 }
 
 export function deleteProfile(user) {
-  return sendRequest(`${BASE_URL}/${user._id}`, "DELETE");
+  return sendRequest(`${BASE_URL}/${user?._id}`, "DELETE");
 }
 
 export function getAll() {
@@ -25,5 +25,5 @@ export function getAll() {
 }
 
 export function createProfile(user) {
-  return sendRequest(`${BASE_URL}/${user._id}`, "POST");
+  return sendRequest(`${BASE_URL}/${user?._id}`, "POST");
 }
