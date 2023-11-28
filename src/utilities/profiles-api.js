@@ -5,7 +5,6 @@ const BASE_URL = "/api/profiles";
 
 // Retrieve user's profile (controller accesses user via req)
 export function getProfile(user) {
-  console.log(user);
   return sendRequest(`${BASE_URL}/${user?._id}`);
 }
 
