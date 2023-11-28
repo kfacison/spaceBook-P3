@@ -13,8 +13,8 @@ export default function Profile({ myProfile }) {
   const [otherProfile, setOtherProfile] = useState(false);
   let { id } = useParams();
 
-  // Using pagePosts as it should load the posts for the profile/:id-- not just the logged in user's profile
-  const [pagePosts, setPagePosts] = useState([]);
+  // // Using pagePosts as it should load the posts for the profile/:id-- not just the logged in user's profile
+  // const [pagePosts, setPagePosts] = useState([]);
 
   useEffect(() => {
     checkOther();
@@ -35,20 +35,20 @@ export default function Profile({ myProfile }) {
     }
   }, [id, myProfile.user]);
 
-  // Function to retrieve all posts for the user's Profile page
-  useEffect(function () {
-    async function getPagePosts() {
-      console.log("get profile page's Posts");
-      //console.log(id);
-      // Get the array of posts from the page profile's posts array
-      // The controller then populates an array of posts documents from the profile's posts array
-      // const posts = await getPosts(id);
-      // console.log(posts);
-      // // Set pagePosts state with the array of posts documents returned to the posts variable
-      // setPagePosts(posts);
-    }
-    getPagePosts();
-  }, []);
+  // // Function to retrieve all posts for the user's Profile page
+  // useEffect(function () {
+  //   async function getPagePosts() {
+  //     console.log("get profile page's Posts");
+  //     //console.log(id);
+  //     // Get the array of posts from the page profile's posts array
+  //     // The controller then populates an array of posts documents from the profile's posts array
+  //     // const posts = await getPosts(id);
+  //     // console.log(posts);
+  //     // // Set pagePosts state with the array of posts documents returned to the posts variable
+  //     // setPagePosts(posts);
+  //   }
+  //   getPagePosts();
+  // }, []);
 
   return (
     <>
@@ -75,8 +75,8 @@ export default function Profile({ myProfile }) {
             <FriendsList myProfile={myProfile} />
             {/* Need to pass down setPagePosts to update state when there is a new post */}
             <PostComponent
-              pagePosts={pagePosts}
-              setPagePosts={setPagePosts}
+              // pagePosts={pagePosts}
+              // setPagePosts={setPagePosts}
               myProfile={myProfile}
             />
           </div>

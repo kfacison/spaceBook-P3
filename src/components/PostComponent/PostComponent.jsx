@@ -6,17 +6,17 @@ import PostLI from "../PostsLI/PostLI";
 
 export default function PostComponent({ myProfile, otherProfile }) {
   let { id } = useParams();
-  const [posts, setPosts] = useState([]);
+  // const [posts, setPosts] = useState([]);
 
   const profileToUse = myProfile || otherProfile;
 
   useEffect(() => {
     if (profileToUse) {
-      setPosts(profileToUse.posts || []);
+      setPagePosts(profileToUse.posts || []);
     }
   }, [myProfile, otherProfile]);
 
-  console.log(id)
+  console.log(`The id ${id}`)
 
   // Using pagePosts as it should load the posts for the profile/:id-- not just the logged in user's profile
   const [pagePosts, setPagePosts] = useState([]);
@@ -25,12 +25,12 @@ export default function PostComponent({ myProfile, otherProfile }) {
   useEffect(function () {
     async function getPagePosts() {
       console.log("get profile page's Posts");
-      console.log(myProfile._id);
       // Get the array of posts from the page profile's posts array
-      // The controller then populates an array of posts documents from the profile's posts array
+
       const posts = await postsAPI.getPosts(myProfile._id);
       // console.log(posts);
-      // // Set pagePosts state with the array of posts documents returned to the posts variable
+      // The controller then populates an array of posts documents from the profile's posts array
+      // Set pagePosts state with the array of posts documents returned to the posts variable
       setPagePosts(posts);
     }
     getPagePosts();
