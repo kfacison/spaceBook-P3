@@ -10,12 +10,12 @@ module.exports = {
 
 // Reach Goal
 async function deletePost(req, res) {
-  console.log("Hit deletePost controller");
+ 
 }
 
 // Reach Goal
 async function updatePost(req, res) {
-  console.log("Hit update post controller");
+ 
 }
 
 async function getPosts(req, res) {
@@ -27,7 +27,6 @@ async function getPosts(req, res) {
     if (profile) {
       res.json(profile.posts);
     } else {
-      console.log("Sending back empty array")
       res.json([])
 }}
 catch (error) {

@@ -14,7 +14,6 @@ const AllProfiles = ({ myProfile, setMyProfile }) => {
     async function getAllProfiles() {
       try {
         const allProfiles = await getAll(); // Assuming getAll is your API utility to fetch all profiles
-        console.log(`Tried getting all prof ${allProfiles}`);
         setAllProfiles(allProfiles);
       } catch (error) {
         // Handle error here if needed
@@ -44,7 +43,6 @@ const AllProfiles = ({ myProfile, setMyProfile }) => {
         friends: [...friendsArray, friendId],
       });
       setMyProfile(response);
-      console.log(myProfile.friends);
     } catch (error) {
       console.error("Error adding friend:", error);
       // Revert to the original state in case of an error
