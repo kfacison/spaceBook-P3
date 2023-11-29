@@ -1,13 +1,13 @@
 <mxfile host="65bd71144e">
     <diagram id="mKbNgIMhx3-CPgFHHdd7" name="Page-1">
-        <mxGraphModel dx="579" dy="664" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="570" dy="483" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
                 <mxCell id="22" value="User" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" parent="1" vertex="1">
                     <mxGeometry x="40" y="62.5" width="160" height="120" as="geometry"/>
                 </mxCell>
-                <mxCell id="23" value="+Email:String&#10;+Password:String" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" parent="22" vertex="1">
+                <mxCell id="23" value="+Email:String&#10;+Password:String&#10;+TimeStamp" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" parent="22" vertex="1">
                     <mxGeometry y="30" width="160" height="90" as="geometry"/>
                 </mxCell>
                 <mxCell id="27" style="edgeStyle=none;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0.968;entryY=1.016;entryDx=0;entryDy=0;entryPerimeter=0;" parent="22" source="23" target="23" edge="1">
@@ -28,7 +28,7 @@
                 <mxCell id="28" value="Profile" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" parent="1" vertex="1">
                     <mxGeometry x="285.5" y="25" width="264.5" height="195" as="geometry"/>
                 </mxCell>
-                <mxCell id="29" value="+Bio:String&#10;+Username:String&#10;+Age:Number&#10;+User:UserID&#10;+Photo:String&#10;+FavPlanet:String&#10;+FriendsList:[Username Ref-ProfileID]" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" parent="28" vertex="1">
+                <mxCell id="29" value="+User:UserID&#10;+Avatar:String&#10;+Username:String&#10;+Species:String&#10;+FavPlanet:String&#10;+Bio:String&#10;+FriendsList:[Username Ref-ProfileID]&#10;+Posts:[Post Ref-PostID]&#10;+TimeStamp" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" parent="28" vertex="1">
                     <mxGeometry y="30" width="264.5" height="165" as="geometry"/>
                 </mxCell>
                 <mxCell id="34" value="Post" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" parent="1" vertex="1">
