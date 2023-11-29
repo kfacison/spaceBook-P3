@@ -30,7 +30,6 @@ export default function App() {
         // Handle the error, e.g., set an error state, display a message, etc.
       }
     }
-  
     getMyProfile();
   }, [user]);
 
@@ -69,7 +68,7 @@ export default function App() {
             </Routes>
           </>
         ) : (
-          <AuthPage setUser={setUser} />
+          <AuthPage setUser={setUser}/>
         )}
       </main>
     </div>
