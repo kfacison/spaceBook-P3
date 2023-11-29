@@ -24,12 +24,20 @@ export default function AboutMe({ myProfile, otherProfile }) {
           </div>
           <div id="about-me-wrapper">
             <div id="about-me-box">
-              <div className="about-me-cat">Name: {myProfile.username}</div>
-              <div className="about-me-cat">Species: {myProfile.species}</div>
               <div className="about-me-cat">
-                Favorite Planet: {myProfile.favPlanet}
+                <strong>Name: </strong> {myProfile.username}
               </div>
-              <div className="about-me-cat">Bio: {myProfile.bio}</div>
+
+              <div className="about-me-cat">
+                <strong>Species:</strong> {myProfile.species}
+              </div>
+              <div className="about-me-cat">
+                <strong>Favorite Planet: </strong>
+                {myProfile.favPlanet}
+              </div>
+              <div className="about-me-cat">
+                <strong>Bio:</strong> {myProfile.bio}
+              </div>
             </div>
             {id === myProfile._id || id === myProfile.user ? (
               <Link

@@ -2,7 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   border-radius: 10px;
-  justify-content: space-between;
+  justify-content: space-around;
   margin: 0;
   width: 90%;
   margin-top: 20px;
@@ -42,4 +42,5 @@ a {
 }
 span {
   width: 100px;
+  color: var(--main-btn-link-text-color-switch);
 }
