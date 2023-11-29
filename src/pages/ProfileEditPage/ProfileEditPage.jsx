@@ -22,15 +22,7 @@ export default function ProfileEditPage({ myProfile, setMyProfile, setUser }) {
     setFormData(newFormData);
     //console.log(newFormData);
   }
-  // async function handleSubmit(evt) {
-  //   evt.preventDefault();
-  //   console.log(formData);
-  //   console.log("sent to uttilities");
-  //   const submitRes = await update(formData);
-  //   console.log(submitRes);
-  //   await setMyProfile(submitRes);
-  //   return navigate("/profiles/" + myProfile.user);
-  // }
+  
   async function handleSubmit(evt) {
     evt.preventDefault();
 
