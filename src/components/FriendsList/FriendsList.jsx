@@ -9,14 +9,28 @@ export default function FriendsList({ myProfile, otherProfile }) {
 
   useEffect(() => {
     const fetchFriendsDetails = async () => {
-      if (profileToUse && profileToUse.friends) {
-        const friendsProfiles = await Promise.all(
-          profileToUse.friends.map((friendId) => getOther(friendId)) // Assuming getProfile is your API utility to fetch a user profile by ID
-        );
-        setFriends(friendsProfiles);
+      try {
+        if (profileToUse && profileToUse.friends) {
+          const friendsProfiles = await Promise.all(
+            profileToUse.friends.map(async (friendId) => {
+              try {
+                return await getOther(friendId);
+              } catch (error) {
+                // Handle individual friend fetching error here if needed
+                console.error(`Error fetching friend ${friendId}:`, error);
+                return null; // or handle it in a way that suits your application
+              }
+            })
+          );
+  
+          setFriends(friendsProfiles.filter((friend) => friend !== null));
+        }
+      } catch (error) {
+        // Handle overall friends fetching error here if needed
+        console.error('Error fetching friends:', error);
       }
     };
-
+  
     fetchFriendsDetails();
   }, [profileToUse]);
 
