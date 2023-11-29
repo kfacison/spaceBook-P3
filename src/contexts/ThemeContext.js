@@ -7,7 +7,6 @@ export const ThemeProvider = ({ children }) => {
 
   const toggleTheme = () => {
     setTheme(theme === "blue" ? "space" : "blue");
-    console.log(theme);
   };
   useEffect(() => {
     // Update the body's data-theme attribute whenever the theme changes

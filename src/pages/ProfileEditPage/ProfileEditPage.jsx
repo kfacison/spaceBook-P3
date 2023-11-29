@@ -20,17 +20,8 @@ export default function ProfileEditPage({ myProfile, setMyProfile, setUser }) {
   function handleChange(evt) {
     const newFormData = { ...formData, [evt.target.name]: evt.target.value };
     setFormData(newFormData);
-    //console.log(newFormData);
   }
-  // async function handleSubmit(evt) {
-  //   evt.preventDefault();
-  //   console.log(formData);
-  //   console.log("sent to uttilities");
-  //   const submitRes = await update(formData);
-  //   console.log(submitRes);
-  //   await setMyProfile(submitRes);
-  //   return navigate("/profiles/" + myProfile.user);
-  // }
+  
   async function handleSubmit(evt) {
     evt.preventDefault();
 
@@ -38,13 +29,12 @@ export default function ProfileEditPage({ myProfile, setMyProfile, setUser }) {
     const formData = new FormData(evt.target);
 
     try {
-      console.log("Sending data to utilities");
       const submitRes = await sendRequest(
         `/api/profiles/${myProfile.user}`,
         "PUT",
         formData
       );
-      console.log(submitRes);
+     
       await setMyProfile(submitRes);
       return navigate("/profiles/" + myProfile.user);
     } catch (error) {
@@ -54,15 +44,12 @@ export default function ProfileEditPage({ myProfile, setMyProfile, setUser }) {
   async function handleDelete() {
     if (window.confirm("Are you sure you want to delete this?")) {
       // delete it!
-      console.log("profile should be deleted");
       const d = await deleteProfile(myProfile.user);
       navigate("/");
       logOut();
       setUser(null);
-      //console.log(d);
     } else {
       // Do nothing!
-      console.log("back to edit profile");
     }
   }
   return (
