@@ -11,13 +11,13 @@ export default function AuthPage({setUser, setMyProfile}){
         {authState && 
         <>
         <h2>SignUp</h2>
-        <SignUpForm setUser={setUser} setMyProfile={setMyProfile}/>
+        <SignUpForm setUser={setUser} />
         </>
         }
         { !authState &&
         <>
         <h2>Login</h2>
-        <LoginForm setUser={setUser} setMyProfile={setMyProfile}/>
+        <LoginForm setUser={setUser} />
         </>
         }
         </main>

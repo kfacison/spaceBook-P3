@@ -68,7 +68,7 @@ export default function App() {
             </Routes>
           </>
         ) : (
-          <AuthPage setUser={setUser} setMyProfile={setMyProfile}/>
+          <AuthPage setUser={setUser}/>
         )}
       </main>
     </div>

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import * as usersService from '../../utilities/users-service';
 import { getProfile } from '../../utilities/profiles-api';
 
-export default function LoginForm({ setUser, setMyProfile }) {
+export default function LoginForm({ setUser }) {
     const [credentials, setCredentials] = useState({
         email: '',
         password: ''
@@ -23,7 +23,6 @@ export default function LoginForm({ setUser, setMyProfile }) {
         // payload of the JSON Web Token (JWT)
         const user = await usersService.login(credentials);
         const profile = await getProfile(user);
-        await setMyProfile(profile)
         await setUser(user);
         //console.log(user)
         } catch {

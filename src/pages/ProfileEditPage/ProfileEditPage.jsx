@@ -60,7 +60,7 @@ export default function ProfileEditPage({ myProfile, setMyProfile, setUser }) {
       navigate("/");
       logOut();
       setUser(null);
-      console.log(d);
+      //console.log(d);
     } else {
       // Do nothing!
       console.log("back to edit profile");
