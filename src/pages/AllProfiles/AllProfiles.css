@@ -6,7 +6,7 @@
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
-  align-items: flex-end;
+  align-items: flex-start;
   padding: 0;
 }
 
@@ -32,4 +32,3 @@
   border: 2px solid black;
   border-radius: 50%;
 }
-

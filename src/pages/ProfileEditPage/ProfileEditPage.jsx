@@ -3,8 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { update, deleteProfile } from "../../utilities/profiles-api";
 import sendRequest from "../../utilities/send-request";
-import {logOut} from "../../utilities/users-service";
-
+import { logOut } from "../../utilities/users-service";
 
 //if profile is already populated them show that as value
 export default function ProfileEditPage({ myProfile, setMyProfile, setUser }) {
@@ -105,15 +104,15 @@ export default function ProfileEditPage({ myProfile, setMyProfile, setUser }) {
             value={formData.favPlanet}
             onChange={handleChange}
           >
-            <option value="mercury">Mercury</option>
-            <option value="venus">Venus</option>
-            <option value="earth">Earth</option>
-            <option value="mars">Mars</option>
-            <option value="jupiter">Jupiter</option>
-            <option value="saturn">Saturn</option>
-            <option value="uranus">Uranus</option>
-            <option value="neptune">Neptune</option>
-            <option value="pluto">Pluto</option>
+            <option value="Mercury">Mercury</option>
+            <option value="Venus">Venus</option>
+            <option value="Earth">Earth</option>
+            <option value="Mars">Mars</option>
+            <option value="Jupiter">Jupiter</option>
+            <option value="Saturn">Saturn</option>
+            <option value="Uranus">Uranus</option>
+            <option value="Neptune">Neptune</option>
+            <option value="Pluto">Pluto</option>
           </select>
         </div>
 

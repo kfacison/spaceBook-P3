@@ -31,6 +31,7 @@ const NewsFeed = () => {
     justifyContent: "center",
     alignItems: "center",
     color: "white",
+    borderRadius: "20px",
   };
 
   const containerStyle = {
@@ -45,7 +46,7 @@ const NewsFeed = () => {
   return (
     <div id="news-feed-container" style={containerStyle}>
       <h2>ASTRONOMY PICTURE OF THE DAY</h2>
-      <div style={backgroundStyle}></div>\{" "}
+      <div style={backgroundStyle}></div>{" "}
     </div>
   );
 };
