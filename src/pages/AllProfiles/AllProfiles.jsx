@@ -10,23 +10,21 @@ const AllProfiles = ({ myProfile, setMyProfile }) => {
 
   const [allProfiles, setAllProfiles] = useState([]);
 
-  useEffect(function () {
+  useEffect(() => {
     async function getAllProfiles() {
-      const allProfiles = await getAll();
-      console.log(`Tried getting all prof ${allProfiles}`);
-      setAllProfiles(allProfiles);
+      try {
+        const allProfiles = await getAll(); // Assuming getAll is your API utility to fetch all profiles
+        console.log(`Tried getting all prof ${allProfiles}`);
+        setAllProfiles(allProfiles);
+      } catch (error) {
+        // Handle error here if needed
+        console.error('Error getting all profiles:', error);
+      }
     }
+  
     getAllProfiles();
   }, []);
-
-  //  async function handleAddFriend(p){
-  // const newFriend = {
-  //   _id : myProfile._id, friends: p
-  // }
-  // console.log(newFriend)
-  // const sendFriend = await update(newFriend)
-  // setMyProfile(sendFriend);
-  //   }
+  
 
   async function handleAddFriend(friendId) {
     try {
@@ -40,13 +38,7 @@ const AllProfiles = ({ myProfile, setMyProfile }) => {
         console.error("Already added as a friend");
       }
 
-      // Optimistically update the local state
-      // const updatedProfile = {
-      //   ...myProfile,
-      //   friends: [...friendsArray, friendId],
-      // };
-      // setMyProfile(updatedProfile);
-
+     
       const response = await update({
         ...myProfile,
         friends: [...friendsArray, friendId],
