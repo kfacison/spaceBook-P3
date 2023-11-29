@@ -32,7 +32,7 @@ textarea {
   flex-direction: column;
   justify-content: center;
   overflow-y: auto;
-  height: 100px;
+  height: 300px;
   padding: 10px;
   width: 90%;
 }
@@ -66,4 +66,5 @@ textarea {
   padding: 0;
   background-color: var(--main-bg-color);
   border-radius: 10px;
+  color: var(--main-btn-link-text-color-switch);
 }

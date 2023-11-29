@@ -10,10 +10,10 @@ export default function PostComponent({ myProfile, otherProfile }) {
   const defaultNewPost = {
     content: "",
     author: profileToUse._id,
-  }
+  };
   const [pagePosts, setPagePosts] = useState([]);
   const [newPost, setNewPost] = useState(defaultNewPost);
-  
+
   useEffect(() => {
     async function getPagePosts() {
       try {
@@ -63,7 +63,6 @@ export default function PostComponent({ myProfile, otherProfile }) {
               method="post"
               id="user-post-form-container"
             >
-              <label>Type your new post here:</label>
               <input
                 id="user-post-form"
                 name="content"
@@ -75,20 +74,16 @@ export default function PostComponent({ myProfile, otherProfile }) {
               <button>POST</button>
             </form>
           </div>
-          TIMELINE
+          <h2>TIMELINE</h2>
           <div id="old-posts-container">
-            OLD POSTS
             <ul id="old-posts-list">{displayPosts}</ul>
           </div>
         </div>
       ) : (
         <div id="post-component-container">
-          TIMELINE
+          <h2>TIMELINE</h2>
           <div id="old-posts-container">
-            OLD POSTS
-            <ul id="old-posts-list">
-              {displayPosts}
-            </ul>
+            <ul id="old-posts-list">{displayPosts}</ul>
           </div>
         </div>
       )}
