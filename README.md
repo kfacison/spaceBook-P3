@@ -20,15 +20,24 @@ SpaceBook is an intergalactic social network. Sign up to create your profile, sh
 ## Restful Routing Chart
 
 RESTful Routes
-| HTTP METHOD (_Verb_) | URL (_Nouns_)      | CRUD   | Response                             |
-| -------------------- | ------------------ | ------ | ------------------------------------ |
-| POST                 | /                  | CREATE | Create user in DB                    |
-| POST                 | /login             | READ   | Check if user cred are valid         |
-| GET                  | /profiles/:id      | READ   | Display profile and posts on profile |
-| GET                  | /profiles          | READ   | Load all profiles page               |
-| PUT                  | /profiles/:id      | UPDATE | Updates user's profile               |
-| DELETE               | /profiles/:id      | DELETE | Delete the user's profile            |
-| POST                 | /profiles/:id      | CREATE | Create a new post on a page          |
+| HTTP METHOD (_Verb_) | URL (_Nouns_)       | CRUD   | Response                                   |
+| -------------------- | ------------------- | ------ | ------------------------------------------ |
+| `Users`              |                     |        |                                            |
+| POST                 | /                   | CREATE | Create user in DB                          |
+| POST                 | /login              | READ   | Check if user cred are valid               |
+| `Profiles`           |                     |        |                                            |
+| GET                  | /profiles/:id       | READ   | Gets active user's profile                 |
+| GET                  | /profiles/:id/other | READ   | Gets the profile of another user           |
+| GET                  | /profiles           | READ   | Gets all profiles                          |
+| POST                 | /profiles/:id       | CREATE | Create a new profile                       |
+| PUT                  | /profiles/:id       | UPDATE | Updates active user's profile              |
+| DELETE               | /profiles/:id       | DELETE | Delete the user's profile                  |
+| `Posts`              |                     |        |                                            |
+| POST                 | /profiles/:id/posts | CREATE | Create a new post on avtive user's profile |
+| GET                  | /profiles/:id/posts | READ   | Gets all posts for a profile               |
+| PUT                  | /profiles/:id/posts | UPDATE | Updates user's post                        |
+| DELETE               | /profiles/:id/posts | DELETE | Delete the user's post                     |
+|                      |                     |        |                                            |
 
 
 ## WireFrame
