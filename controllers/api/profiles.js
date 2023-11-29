@@ -44,14 +44,15 @@ async function getOther(req, res) {
 async function deleteProfile(req, res) {
   console.log("Hit deleteProfile controller");
   try {
-    //console.log(req.params.id)
-    //const profile = await Profile.findOne({ user: req.params.id });
+    const profileInfo = await Profile.findOne({ user: req.params.id });
+    const allProfiles = await Profile.updateMany({},{$pull:{friends:profileInfo._id}});
+
     const profile = await Profile.findOneAndDelete({ user: req.params.id });
     const user = await User.findOneAndDelete({ _id: req.params.id });
     // Probably an invalid response for a successful delete
-    res.json(profile);
-  } catch {
-    console.log(`Failed to retrieve user's profile`);
+    res.json(allProfiles);
+  } catch(error) {
+    console.log(error);
   }
 }
 
