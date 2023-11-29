@@ -18,14 +18,13 @@ async function updatePost(req, res) {
   console.log("Hit update post controller");
 }
 
-
 async function getPosts(req, res) {
   try {
     // Populate the posts associated with the profile
     const profile = await Profile.findOne({ _id : req.params.id }).populate(
       "posts"
     );
-    // Check that the profile was found
+    // Verify the profile was found and send posts array in the res
     if (profile) {
       res.json(profile.posts);
     } else {
