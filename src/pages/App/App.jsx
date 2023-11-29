@@ -22,7 +22,6 @@ export default function App() {
   useEffect(() => {
     async function getMyProfile() {
       try {
-        console.log("get myProf");
         const profile = await profilesAPI.getProfile(user);
         setMyProfile(profile);
       } catch (error) {

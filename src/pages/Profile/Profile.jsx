@@ -20,7 +20,6 @@ export default function Profile({ myProfile }) {
       try {
         // if params matches myProfile.user then nothing
         if (myProfile.user === id) {
-          console.log("they are the same");
           setOtherProfile(null);
         } else {
           // else get other profile
