@@ -16,24 +16,46 @@ export default function Profile({ myProfile }) {
   // // Using pagePosts as it should load the posts for the profile/:id-- not just the logged in user's profile
   // const [pagePosts, setPagePosts] = useState([]);
 
+  // useEffect(() => {
+  //   checkOther();
+  //   async function checkOther() {
+  //     //console.log(`the myProfile _id:${myProfile._id}, and myProfile.user:${myProfile.user} and, params id:${id}`);
+  //     //if params matches myProfile.user then nothing
+  //     if (myProfile.user === id) {
+  //       console.log("they are the same");
+  //       setOtherProfile(null);
+  //     } else {
+  //       //else get other profile
+  //       //console.log(`they diff `);
+  //       const other = await getOther(id);
+  //       await setOtherProfile(other);
+  //       //return other;
+  //       //console.log(otherProfile);
+  //     }
+  //   }
+  // }, [id, myProfile]);
   useEffect(() => {
-    checkOther();
     async function checkOther() {
-      //console.log(`the myProfile _id:${myProfile._id}, and myProfile.user:${myProfile.user} and, params id:${id}`);
-      //if params matches myProfile.user then nothing
-      if (myProfile.user === id) {
-        console.log("they are the same");
-        setOtherProfile(null);
-      } else {
-        //else get other profile
-        //console.log(`they diff `);
-        const other = await getOther(id);
-        await setOtherProfile(other);
-        //return other;
-        //console.log(otherProfile);
+      try {
+        // if params matches myProfile.user then nothing
+        if (myProfile.user === id) {
+          console.log("they are the same");
+          setOtherProfile(null);
+        } else {
+          // else get other profile
+          const other = await getOther(id);
+          setOtherProfile(other);
+        }
+      } catch (error) {
+        console.error("Error checking other profile:", error);
+        // Handle the error, e.g., set an error state, display a message, etc.
       }
     }
+  
+    checkOther();
   }, [id, myProfile]);
+
+
 
   // // Function to retrieve all posts for the user's Profile page
   // useEffect(function () {

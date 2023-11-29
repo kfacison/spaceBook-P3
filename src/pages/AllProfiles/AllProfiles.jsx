@@ -36,7 +36,7 @@ const AllProfiles = ({ myProfile, setMyProfile }) => {
         console.error("Cannot add yourself as a friend");
         return;
       }
-      if (friendsArray.includes(friendId)) {
+      if (friendsArray?.includes(friendId)) {
         console.error("Already added as a friend");
       }
 
@@ -65,7 +65,7 @@ const AllProfiles = ({ myProfile, setMyProfile }) => {
       <div id="all-users-container">
         {allProfiles.map((p) => {
           // Check if this profile is in the current user's friends list
-          const isFriend = myProfile.friends.includes(p._id);
+          const isFriend = myProfile.friends?.includes(p._id);
 
           if (p._id !== myProfile._id) {
             return (
