@@ -37,13 +37,8 @@ const port = process.env.PORT || 3001;
 // Put API routes here, before the "catch all" route
 app.use("/api/users", require("./routes/api/users"));
 const ensureLoggedIn = require("./config/ensureLoggedIn");
+// The following route is used for profiles-api and posts-api routes
 app.use("/api/profiles", ensureLoggedIn, require("./routes/api/profiles"));
-// Commenting out router for posts -- using single router bc of url structure
-// app.use(
-//   "/api/profiles/:id/posts",
-//   ensureLoggedIn,
-//   require("./routes/api/posts")
-// );
 
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests

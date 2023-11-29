@@ -18,20 +18,16 @@ async function updatePost(req, res) {
   console.log("Hit update post controller");
 }
 
-
 async function getPosts(req, res) {
   try {
     // Populate the posts associated with the profile
     const profile = await Profile.findOne({ _id : req.params.id }).populate(
       "posts"
     );
-    // Check that the profile was found
-    if (profile) {
-      res.json(profile.posts);
-    } else {
-      console.log("Sending back empty array")
-      res.json([])
+    if (!profile) {
+      res.status(500).json("Failed to get posts")
     }
+    res.json(profile.posts);
   } catch (error) {
     res.status(400).json(error);
   }
