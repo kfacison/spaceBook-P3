@@ -9,6 +9,7 @@ export function getProfile(user) {
 }
 
 export function getOther(id) {
+  
   return sendRequest(`${BASE_URL}/${id}/other`);
 }
 
