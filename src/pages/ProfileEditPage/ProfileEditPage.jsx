@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { update, deleteProfile } from "../../utilities/profiles-api";
 import sendRequest from "../../utilities/send-request";
 import { logOut } from "../../utilities/users-service";
-
+import "./ProfileEditPage.css";
 //if profile is already populated them show that as value
 export default function ProfileEditPage({ myProfile, setMyProfile, setUser }) {
   const navigate = useNavigate();
@@ -69,8 +69,7 @@ export default function ProfileEditPage({ myProfile, setMyProfile, setUser }) {
     <>
       <form onSubmit={handleSubmit} method="put" enctype="multipart/form-data">
         <div id="photo-container-edit-page">
-          {" "}
-          <input type="file" name="avatar" />
+          Upload Profile Photo <input type="file" name="avatar" />
         </div>
 
         <div>

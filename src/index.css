@@ -23,6 +23,7 @@
   --main-btn-link-text-color: black;
   --main-btn-link-bg-color-hover: teal;
   --main-btn-link-text-color-hover: white;
+  --main-btn-link-text-color-switch: black;
 }
 
 [data-theme="space"] {
@@ -34,6 +35,7 @@
   --main-btn-link-bg-color-hover: mediumorchid;
   --main-btn-link-text-color-hover: white;
   --main-div-text-color: white;
+  --main-btn-link-text-color-switch: white;
 }
 
 #root {

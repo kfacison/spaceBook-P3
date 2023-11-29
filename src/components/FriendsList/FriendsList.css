@@ -42,4 +42,5 @@ a {
 }
 span {
   width: 100px;
+  color: var(--main-btn-link-text-color-switch);
 }

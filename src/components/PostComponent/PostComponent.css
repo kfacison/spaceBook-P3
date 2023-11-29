@@ -66,4 +66,5 @@ textarea {
   padding: 0;
   background-color: var(--main-bg-color);
   border-radius: 10px;
+  color: var(--main-btn-link-text-color-switch);
 }

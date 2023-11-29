@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "./NewsFeed.css";
 
 const NewsFeed = () => {
   const [apodData, setApodData] = useState(null);
@@ -31,7 +32,8 @@ const NewsFeed = () => {
     justifyContent: "center",
     alignItems: "center",
     color: "white",
-    borderRadius: "20px",
+    borderRadius: "40px",
+    border: "2px solid var(--main-btn-link-text-color-switch)",
   };
 
   const containerStyle = {
@@ -46,7 +48,8 @@ const NewsFeed = () => {
   return (
     <div id="news-feed-container" style={containerStyle}>
       <h2>ASTRONOMY PICTURE OF THE DAY</h2>
-      <div style={backgroundStyle}></div>{" "}
+      <div style={backgroundStyle}></div>
+      <div className="news-feed-explanation">{apodData.explanation}</div>
     </div>
   );
 };
