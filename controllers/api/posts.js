@@ -24,13 +24,10 @@ async function getPosts(req, res) {
     const profile = await Profile.findOne({ _id : req.params.id }).populate(
       "posts"
     );
-    // Verify the profile was found and send posts array in the res
-    if (profile) {
-      res.json(profile.posts);
-    } else {
-      console.log("Sending back empty array")
-      res.json([])
+    if (!profile) {
+      res.status(500).json("Failed to get posts")
     }
+    res.json(profile.posts);
   } catch (error) {
     res.status(400).json(error);
   }
