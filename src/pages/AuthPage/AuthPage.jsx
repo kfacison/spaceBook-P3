@@ -2,7 +2,7 @@ import { useState } from 'react';
 import SignUpForm from "../../components/SignUpForm/SignUpForm";
 import LoginForm from '../../components/LoginForm/LoginForm';
 
-export default function AuthPage({setUser}){
+export default function AuthPage({setUser, setMyProfile}){
     const [authState, setAuthState ] = useState([true]);
     return (
         <main>
@@ -11,13 +11,13 @@ export default function AuthPage({setUser}){
         {authState && 
         <>
         <h2>SignUp</h2>
-        <SignUpForm setUser={setUser}/>
+        <SignUpForm setUser={setUser} />
         </>
         }
         { !authState &&
         <>
         <h2>Login</h2>
-        <LoginForm setUser={setUser}/>
+        <LoginForm setUser={setUser} />
         </>
         }
         </main>
