@@ -7,13 +7,15 @@ SpaceBook is an intergalactic social network. Sign up to create your profile, sh
 - HTML
 - CSS
 - JavaScript
-- Express
 - Mongoose
+- Express
 - React
+- Node.js
+- NASA API
 
 ## ERD
 
-![ERD](wireframes/PNGS/ERD.png)
+![ERD](wireframes/PNGS/ERDFinal.png)
 
 ## Restful Routing Chart
 
