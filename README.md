@@ -39,13 +39,24 @@ RESTful Routes
 | DELETE               | /profiles/:id/posts | DELETE | Delete the user's post                     |
 |                      |                     |        |                                            |
 
+## Screenshots
+![SingUpPage](wireframes/PNGS/SignUpPage.png)
 
-## WireFrame
+![LoginPage](wireframes/PNGS/LoginPage.png)
 
-![Auth Page](wireframes/PNGS/$_signup_login.png)
-![Profrile Page](wireframes/PNGS/profilepage.png)
-![Edit Page](wireframes/PNGS/editPage.png)
-![AllUser Page](wireframes/PNGS/allUsers.png)
+![HomePage](wireframes/PNGS/HomePage.png)
+
+![HomePageToggled](wireframes/PNGS/HomePageToggled.png)
+
+![ProfilePage](wireframes/PNGS/ProfilePage.png)
+
+![ProfilePageFull](wireframes/PNGS/ProfilePageFull.png)
+
+![ProfileEditPage](wireframes/PNGS/ProfileEditPage.png)
+
+![AllUsersPage](wireframes/PNGS/AllUsersPage.png)
+
+
 
 ## User Stories (AAU)
 
@@ -63,20 +74,20 @@ RESTful Routes
 - User can add friends who are also users on the app.
 - User's friends list will display on their profile.
 - User can see a list of all users on the app.
-- User can upload profile picture.
-- User can toggle App theme
-- NASA API integration.
 
 ## Stretch Goals
 
-1. User can search based on name through list of all users.
-2. User can edit and delete their posts.
-3. User can comment on friend's 'wall'.
-4. User can update/delete their posts on friends' 'wall'.
-5. Spotify API integration for profile song
-6. User can 'like' friends posts.
-7. User can delete their friends.
-8. User can sort their 'top friends'.
+1. User can upload profile picture.
+2. User can search based on name through list of all users.
+3. User can edit and delete their posts.
+4. User can comment on friend's 'wall'.
+5. User can update/delete their posts on friends' 'wall'.
+6. Spotify API integration for profile song
+7. User can toggle App theme colors
+8. User can 'like' friends posts.
+9. User can delete their friends.
+10. User can sort their 'top friends'.
+11. NASA API integration.
 
 ## Maybe Roadblocks
 
@@ -84,3 +95,10 @@ RESTful Routes
 - Route mix up
 - Spotify API integration
 - Git collaboration
+
+## WireFrame
+
+![Auth Page](wireframes/PNGS/$_signup_login.png)
+![Profrile Page](wireframes/PNGS/profilepage.png)
+![Edit Page](wireframes/PNGS/editPage.png)
+![AllUser Page](wireframes/PNGS/allUsers.png)
