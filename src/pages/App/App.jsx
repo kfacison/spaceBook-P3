@@ -19,18 +19,20 @@ export default function App() {
 
   const [myProfile, setMyProfile] = useState([]);
 
-  useEffect(
-    function () {
-      async function getMyProfile() {
+  useEffect(() => {
+    async function getMyProfile() {
+      try {
         console.log("get myProf");
         const profile = await profilesAPI.getProfile(user);
-        // console.log(profile);
         setMyProfile(profile);
+      } catch (error) {
+        console.error("Error getting my profile:", error);
+        // Handle the error, e.g., set an error state, display a message, etc.
       }
-      getMyProfile();
-    },
-    [user]
-  );
+    }
+  
+    getMyProfile();
+  }, [user]);
 
   return (
     <div data-theme={theme}>
