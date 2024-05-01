@@ -2,7 +2,7 @@
 
 SpaceBook is an intergalactic social network. Sign up to create your profile, share your favorite planet, and connect with friends. Create posts on your page to share news, facts, or thoughts about space. You might think this app reminds of you of MySpace, but SpaceBook is out of the this world!
 
-Visit site [here](https://space-book-5ba0b58adc3c.herokuapp.com/)
+Visit site [here](https://space-book-5ba0b58adc3c.herokuapp.com/{:target="_blank"})
 
 ## Tech Being Used
 
